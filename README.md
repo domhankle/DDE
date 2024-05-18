@@ -28,9 +28,3 @@ API/gles1 - `None`
 API/gles2 - `None`
 
 API/glsc2 - `None`
-
-[X] Generate a loader
-
-[] Omit KHR
-
-[] Local Files
