@@ -19,7 +19,7 @@ $(EXECUTABLE) : $(OBJS)
 
 $(BIN_DIR)/%.o : %.cpp $(BIN_DIR)
 	mkdir -p $(dir $@)
-	$(CC) -c $< -o $@ -I$(DEPS_INC_DIR)
+	$(CC) -c $< -o $@ -I$(DEPS_INC_DIR) -I$(INC_DIR)
 
 $(BIN_DIR) :
 	mkdir $(BIN_DIR)

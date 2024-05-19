@@ -2,16 +2,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <stdlib.h>
-#include <stdio.h>
-
-#include <iostream>
-
-void error_callback(int error, const char* description)
-{
-    std::cerr << "Error " << error << ": " << description << "\n";
-    exit(EXIT_FAILURE);
-}
+#include <DDE/callbacks.hpp>
 
 int main() {
 
