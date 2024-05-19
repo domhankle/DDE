@@ -15,7 +15,7 @@ all : $(EXECUTABLE)
 	./$(EXECUTABLE)
 
 $(EXECUTABLE) : $(OBJS)
-	$(CC) $< -o $(EXECUTABLE) -L$(DEPS_LIB_DIR) $(LIBS)
+	$(CC) $^ -o $(EXECUTABLE) -L$(DEPS_LIB_DIR) $(LIBS)
 
 $(BIN_DIR)/%.o : %.cpp $(BIN_DIR)
 	mkdir -p $(dir $@)
