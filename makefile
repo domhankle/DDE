@@ -3,9 +3,10 @@ DEPS_INC_DIR:=deps/include
 LIBS:=-lglad -lglfw3
 
 BIN_DIR:=bin
-ROOT_DIR:=DDE
-SRCS:=$(shell find $(ROOT_DIR) -name "*.cpp")
-OBJS:=$(patsubst $(ROOT_DIR)/%.cpp, $(BIN_DIR)/$(ROOT_DIR)/%.o, $(SRCS))
+SRC_DIR:=src
+INC_DIR:=include
+SRCS:=$(shell find $(SRC_DIR) -name "*.cpp")
+OBJS:=$(patsubst $(SRC_DIR)/%.cpp, $(BIN_DIR)/$(SRC_DIR)/%.o, $(SRCS))
 
 CC:=g++
 EXECUTABLE:=$(BIN_DIR)/dom_drawing_engine
