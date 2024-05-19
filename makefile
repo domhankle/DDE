@@ -10,7 +10,7 @@ OBJS:=$(patsubst $(ROOT_DIR)/%.cpp, $(BIN_DIR)/$(ROOT_DIR)/%.o, $(SRCS))
 CC:=g++
 EXECUTABLE:=$(BIN_DIR)/dom_drawing_engine
 
-.PHONY all : $(EXECUTABLE)
+all : $(EXECUTABLE)
 	./$(EXECUTABLE)
 
 $(EXECUTABLE) : $(OBJS)
