@@ -6,16 +6,16 @@
 
 class RenderEngine {
 
-    private:
-        GLFWwindow* _window;
-        void _initializeGLFW();
-        void _configureGLFW();
-        void _configureWindow();
-        void _initializeGLAD();
+  private:
+    GLFWwindow* _window;
+    void _initializeGLFW();
+    void _configureGLFW();
+    void _configureWindow();
+    void _initializeGLAD();
 
-    public:
-        RenderEngine();
-        ~RenderEngine();
-        void start();
+  public:
+    RenderEngine();
+    ~RenderEngine();
+    void start();
 
 };
