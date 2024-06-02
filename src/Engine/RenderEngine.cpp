@@ -6,7 +6,6 @@ RenderEngine::RenderEngine(){
     this->_initializeGLFW();
     this->_configureGLFW();
     this->_configureWindow();
-
 }
 
 RenderEngine::~RenderEngine(){
