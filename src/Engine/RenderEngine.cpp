@@ -29,6 +29,7 @@ void RenderEngine::_configureGLFW(){
 
     glfwSetErrorCallback(error_callback);
 
+
 }
 
 void RenderEngine::_initializeGLAD(){
