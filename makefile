@@ -1,6 +1,6 @@
 DEPS_LIB_DIR:=deps/libs
 DEPS_INC_DIR:=deps/include
-LIBS:=-lglad -lglfw3
+LIBS:=-lglad -lglfw3 -lGL
 
 BIN_DIR:=bin
 SRC_DIR:=src
