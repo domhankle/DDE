@@ -1,49 +1,39 @@
-#include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Callbacks.hpp>
+#include <DDE/Engine/RenderEngine.hpp>
 
-RenderEngine::RenderEngine(){
+RenderEngine::RenderEngine() {
   this->_initializeGLFW();
   this->_configureGLFW();
   this->_configureWindow();
 }
 
-RenderEngine::~RenderEngine(){
+RenderEngine::~RenderEngine() {
   glfwDestroyWindow(this->_window);
   glfwTerminate();
 }
 
-void RenderEngine::_initializeGLFW(){
-
-  if(!glfwInit())
-  {
-      exit(EXIT_FAILURE);
-  }
-
-}
-
-void RenderEngine::_configureGLFW(){
-
-  glfwSetErrorCallback(error_callback);
-
-}
-
-void RenderEngine::_initializeGLAD(){
-
-  if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
-      std::cerr << "GLAD failed to load modern OpenGL extensions\n";
-      exit(EXIT_FAILURE);
+void RenderEngine::_initializeGLFW() {
+  if (!glfwInit()) {
+    exit(EXIT_FAILURE);
   }
 }
 
-void RenderEngine::_configureWindow(){
+void RenderEngine::_configureGLFW() { glfwSetErrorCallback(error_callback); }
 
+void RenderEngine::_initializeGLAD() {
+  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    std::cerr << "GLAD failed to load modern OpenGL extensions\n";
+    exit(EXIT_FAILURE);
+  }
+}
+
+void RenderEngine::_configureWindow() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 
   this->_window = glfwCreateWindow(500, 500, "DDE Window", nullptr, nullptr);
-  if(!this->_window)
-  {
-      exit(EXIT_FAILURE);
+  if (!this->_window) {
+    exit(EXIT_FAILURE);
   }
 
   glfwMakeContextCurrent(this->_window);
@@ -51,10 +41,9 @@ void RenderEngine::_configureWindow(){
   glfwSwapInterval(1);
 }
 
-void RenderEngine::start(){
-  while(!glfwWindowShouldClose(this->_window))
-  {
-      glfwSwapBuffers(this->_window);
-      glfwPollEvents();
+void RenderEngine::start() {
+  while (!glfwWindowShouldClose(this->_window)) {
+    glfwSwapBuffers(this->_window);
+    glfwPollEvents();
   }
 }
