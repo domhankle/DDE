@@ -43,7 +43,14 @@ void RenderEngine::_configureWindow() {
 
 void RenderEngine::start() {
   while (!glfwWindowShouldClose(this->_window)) {
+
+    this->_driver();
+
     glfwSwapBuffers(this->_window);
     glfwPollEvents();
   }
+}
+
+void RenderEngine::setDriver(std::function<void()> driver) {
+  this->_driver = driver;
 }
