@@ -43,6 +43,8 @@ void RenderEngine::_configureWindow() {
 
 void RenderEngine::start() {
   while (!glfwWindowShouldClose(this->_window)) {
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT);
 
     this->_driver();
 
