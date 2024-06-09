@@ -125,7 +125,10 @@ int main() {
   // Enable a Vertex Location
   glEnableVertexAttribArray(0);
 
+  // Set the driver function to be called in render loop
   engine.setDriver(mockDriver);
+
+  // Start the Rendering Enginge
   engine.start();
 
   return 0;
