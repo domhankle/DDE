@@ -7,18 +7,14 @@ cmake_minimum_required(VERSION 3.11)
 # Specify generation of compile_comands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Store all c/cpp files in SOURCES directory.
-set(SOURCES 
-    src/dde.cpp
-    src/Engine/RenderEngine.cpp
-    src/Glad/glad.c
-)
-
 # Include GLFW Library
-add_subdirectory(deps/glfw)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glfw)
+
+# Include src directory
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Include DDE directories
-include_directories(include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Add source files to the project executable
 add_executable(dom_draw_engine ${SOURCES})

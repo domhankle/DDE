@@ -1,0 +1,2 @@
+# Append the src files to SOURCES
+set(GLAD_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/glad.c PARENT_SCOPE)
