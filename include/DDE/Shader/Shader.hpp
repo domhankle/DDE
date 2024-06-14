@@ -7,14 +7,15 @@ class Shader {
 private:
   unsigned int _program;
   std::string _sourceCode;
-  unsigned int _type;
   std::string _extractShaderSource(std::string filePath) const;
 
 public:
   unsigned int getProgram() const;
   std::string getSourceCode() const;
-  unsigned int getType() const;
-  Shader(std::string filePath);
+  Shader(std::string vertexShaderFilePath, std::string fragmentShaderFilePath,
+         std::string geometryShaderFilePath = "",
+         std::string tessellationShaderFilePath = "",
+         std::string computeShaderFilePath = "");
   ~Shader();
 
   Shader() = delete;

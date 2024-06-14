@@ -3,8 +3,6 @@
 #include <iostream>
 #include <sstream>
 
-unsigned int Shader::getType() const { return this->_type; }
-
 std::string Shader::getSourceCode() const { return this->_sourceCode; }
 
 unsigned int Shader::getProgram() const { return this->_program; }
