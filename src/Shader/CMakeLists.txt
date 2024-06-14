@@ -1,0 +1,2 @@
+# Append the src files to SOURCES
+set(SHADER_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Shader.cpp PARENT_SCOPE)
