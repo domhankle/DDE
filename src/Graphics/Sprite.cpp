@@ -1,6 +1,8 @@
+#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Sprite.hpp>
 #include <exception>
 #include <iostream>
+#include <vector>
 
 DDE::Sprite::Sprite() {
   glGenVertexArrays(1, &this->_spriteObject);
@@ -14,3 +16,9 @@ DDE::Sprite::Sprite() {
 
   glBindVertexArray(0);
 }
+
+unsigned int DDE::Sprite::getSpriteObject() const {
+  return this->_spriteObject;
+}
+
+DDE::Vertex DDE::Sprite::getPosition() const { return this->_position; }
