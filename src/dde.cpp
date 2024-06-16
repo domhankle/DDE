@@ -1,17 +1,16 @@
 #include <DDE/Engine/RenderEngine.hpp>
-#include <iostream>
+#include <DDE/Shader/Shader.hpp>
+#include <DDE/Shader/ShaderProgram.hpp>
 #include <vector>
 
 #include "Glad/glad/glad.h"
 
-// Program object
-unsigned int program;
 // Vertex Array Object
 unsigned int vao;
 
-void mockDriver() {
-  // Activate our program object
-  glUseProgram(program);
+void mockDriver(ShaderProgram &program) {
+  // Use our shader program
+  program.use();
   // Bind our VAO holding vertex data
   glBindVertexArray(vao);
   // Draw call to start the render pipeline
@@ -19,84 +18,15 @@ void mockDriver() {
 }
 
 int main() {
+
   // Create the Render Engine
   RenderEngine engine;
 
-  // Create our program object
-  program = glCreateProgram();
+  Shader vertexShader{"../sandbox/shaders/shader.vs.glsl", GL_VERTEX_SHADER};
+  Shader fragmentShader{"../sandbox/shaders/shader.fs.glsl",
+                        GL_FRAGMENT_SHADER};
 
-  // Create our two shader objects
-  unsigned int vShader = glCreateShader(GL_VERTEX_SHADER);
-  unsigned int fShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-  // Vertex Shader source code
-  const char* vShaderSource =
-      "#version 330\n"
-      "layout(location = 0) in vec3 position;\n"
-      "void main() {\n"
-      " gl_Position = vec4(position, 1.0f);\n"
-      "}\n";
-
-  // Fragment Shader source code
-  const char* fShaderSource =
-      "#version 330\n"
-      "out vec4 color;\n"
-      "void main() {\n"
-      " color = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n"
-      "}\n";
-
-  // Attach shader sources
-  glShaderSource(vShader, 1, &vShaderSource, nullptr);
-  glShaderSource(fShader, 1, &fShaderSource, nullptr);
-
-  // Compile Shaders
-  glCompileShader(vShader);
-  glCompileShader(fShader);
-
-  // Status flag
-  int success;
-  // Error log
-  char log[512];
-
-  // Check Vertex Shader compile status
-  glGetShaderiv(vShader, GL_COMPILE_STATUS, &success);
-
-  if (!success) {
-    glGetShaderInfoLog(vShader, 512, nullptr, log);
-    std::cerr << "VERTEX SHADER FAILED TO COMPILE!" << std::endl
-              << log << std::endl;
-    exit(EXIT_FAILURE);
-  }
-
-  // Check Fragment Shader compile status
-  glGetShaderiv(fShader, GL_COMPILE_STATUS, &success);
-
-  if (!success) {
-    glGetShaderInfoLog(fShader, 512, nullptr, log);
-    std::cerr << "FRAGMENT SHADER FAILED TO COMPILE!" << std::endl
-              << log << std::endl;
-    exit(EXIT_FAILURE);
-  }
-
-  // Attach our shaders to the program object
-  glAttachShader(program, vShader);
-  glAttachShader(program, fShader);
-
-  // Link our program object
-  glLinkProgram(program);
-
-  // Check program link status
-  glGetProgramiv(program, GL_LINK_STATUS, &success);
-
-  if (!success) {
-    glGetProgramInfoLog(program, 512, nullptr, log);
-    std::cerr << "PROGRAM FAILED TO LINK!" << std::endl << log << std::endl;
-    exit(EXIT_FAILURE);
-  }
-
-  // Clean up our Shader objects
-  glDeleteShader(vShader);
-  glDeleteShader(fShader);
+  ShaderProgram program{{vertexShader, fragmentShader}};
 
   // Create our Vertex Buffer object
   unsigned int vbo;
@@ -120,16 +50,13 @@ int main() {
                vertices.data(), GL_STATIC_DRAW);
 
   // Describe our vertices for the GPU
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 
   // Enable a Vertex Location
   glEnableVertexAttribArray(0);
 
-  // Set the driver function to be called in render loop
-  engine.setDriver(mockDriver);
-
   // Start the Rendering Enginge
-  engine.start();
+  engine.start(mockDriver, std::ref(program));
 
   return 0;
 }

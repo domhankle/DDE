@@ -7,14 +7,30 @@ class Shader {
 private:
   std::string _sourceCode;
   unsigned int _type;
-  std::string _extractShaderSource(std::string filePath) const;
+  unsigned int _shaderObject;
+  bool _autoCompile;
+
+  std::string _extractShaderSource(std::string &filePath) const;
+  void _compileShaderObject(const char *sourceCode, unsigned int type);
+  bool _shaderCompiledSuccessfully(unsigned int shaderObject) const;
 
 public:
-  unsigned int getProgram() const;
   unsigned int getType() const;
-  std::string getSourceCode() const;
 
-  Shader(std::string filePath);
-  ~Shader();
+  unsigned int getShaderObject() const;
+
+  std::string getSourceCode() const;
+  void setSourceCode(std::string &filePath);
+
+  bool isAutoCompiled() const;
+
+  Shader(std::string &filePath, unsigned int shaderType,
+         bool autoCompile = true);
+  Shader(std::string &&filePath, unsigned int shaderType,
+         bool autoCompile = true);
+  ~Shader() = default;
   Shader() = delete;
+  ;
+
+  void compileShader(std::string &filePath);
 };

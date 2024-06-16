@@ -40,19 +40,3 @@ void RenderEngine::_configureWindow() {
   this->_initializeGLAD();
   glfwSwapInterval(1);
 }
-
-void RenderEngine::start() {
-  while (!glfwWindowShouldClose(this->_window)) {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    this->_driver();
-
-    glfwSwapBuffers(this->_window);
-    glfwPollEvents();
-  }
-}
-
-void RenderEngine::setDriver(std::function<void()> driver) {
-  this->_driver = driver;
-}
