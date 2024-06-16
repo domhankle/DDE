@@ -4,6 +4,8 @@
 #include <GLFW/glfw3.h>
 #include <Glad/glad/glad.h>
 
+namespace DDE {
+
 class RenderEngine {
 private:
   GLFWwindow *_window;
@@ -31,3 +33,5 @@ public:
     }
   }
 };
+
+} // namespace DDE

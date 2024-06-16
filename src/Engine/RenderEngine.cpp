@@ -1,33 +1,35 @@
 #include <DDE/Callbacks.hpp>
 #include <DDE/Engine/RenderEngine.hpp>
 
-RenderEngine::RenderEngine() {
+DDE::RenderEngine::RenderEngine() {
   this->_initializeGLFW();
   this->_configureGLFW();
   this->_configureWindow();
 }
 
-RenderEngine::~RenderEngine() {
+DDE::RenderEngine::~RenderEngine() {
   glfwDestroyWindow(this->_window);
   glfwTerminate();
 }
 
-void RenderEngine::_initializeGLFW() {
+void DDE::RenderEngine::_initializeGLFW() {
   if (!glfwInit()) {
     exit(EXIT_FAILURE);
   }
 }
 
-void RenderEngine::_configureGLFW() { glfwSetErrorCallback(error_callback); }
+void DDE::RenderEngine::_configureGLFW() {
+  glfwSetErrorCallback(DDE::error_callback);
+}
 
-void RenderEngine::_initializeGLAD() {
+void DDE::RenderEngine::_initializeGLAD() {
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cerr << "GLAD failed to load modern OpenGL extensions\n";
     exit(EXIT_FAILURE);
   }
 }
 
-void RenderEngine::_configureWindow() {
+void DDE::RenderEngine::_configureWindow() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 

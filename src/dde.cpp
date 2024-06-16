@@ -8,9 +8,10 @@
 // Vertex Array Object
 unsigned int vao;
 
-void mockDriver(ShaderProgram &program) {
+void drawFunction(DDE::ShaderProgram &program) {
   // Use our shader program
   program.use();
+
   // Bind our VAO holding vertex data
   glBindVertexArray(vao);
   // Draw call to start the render pipeline
@@ -20,13 +21,14 @@ void mockDriver(ShaderProgram &program) {
 int main() {
 
   // Create the Render Engine
-  RenderEngine engine;
+  DDE::RenderEngine engine;
 
-  Shader vertexShader{"../sandbox/shaders/shader.vs.glsl", GL_VERTEX_SHADER};
-  Shader fragmentShader{"../sandbox/shaders/shader.fs.glsl",
-                        GL_FRAGMENT_SHADER};
+  DDE::Shader vertexShader{"../sandbox/shaders/shader.vs.glsl",
+                           GL_VERTEX_SHADER};
+  DDE::Shader fragmentShader{"../sandbox/shaders/shader.fs.glsl",
+                             GL_FRAGMENT_SHADER};
 
-  ShaderProgram program{{vertexShader, fragmentShader}};
+  DDE::ShaderProgram program{{vertexShader, fragmentShader}};
 
   // Create our Vertex Buffer object
   unsigned int vbo;
@@ -56,7 +58,7 @@ int main() {
   glEnableVertexAttribArray(0);
 
   // Start the Rendering Enginge
-  engine.start(mockDriver, std::ref(program));
+  engine.start(drawFunction, std::ref(program));
 
   return 0;
 }

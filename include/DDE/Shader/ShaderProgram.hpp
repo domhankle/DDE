@@ -5,16 +5,18 @@
 #include <initializer_list>
 #include <vector>
 
+namespace DDE {
+
 class ShaderProgram {
 private:
-  std::vector<Shader> _shaderSources;
+  std::vector<DDE::Shader> _shaderSources;
   unsigned int _programObject;
 
   bool _programLinkedSuccessfully(unsigned int programObject) const;
   void _linkProgram(std::vector<Shader> &sources);
 
 public:
-  std::vector<Shader> getShaderSources() const;
+  std::vector<DDE::Shader> getShaderSources() const;
   unsigned int getProgramObject() const;
   void use() const;
 
@@ -23,3 +25,5 @@ public:
   ~ShaderProgram() = default;
   ShaderProgram() = delete;
 };
+
+} // namespace DDE

@@ -2,6 +2,8 @@
 
 #include <string>
 
+namespace DDE {
+
 class Shader {
 
 private:
@@ -34,3 +36,5 @@ public:
 
   void compileShader(std::string &filePath);
 };
+
+} // namespace DDE

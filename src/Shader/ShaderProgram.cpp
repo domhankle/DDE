@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sstream>
 
-ShaderProgram::ShaderProgram(std::initializer_list<Shader> shaders)
+DDE::ShaderProgram::ShaderProgram(std::initializer_list<Shader> shaders)
     : _shaderSources{shaders} {
   try {
     this->_linkProgram(this->_shaderSources);
@@ -14,15 +14,15 @@ ShaderProgram::ShaderProgram(std::initializer_list<Shader> shaders)
   }
 }
 
-std::vector<Shader> ShaderProgram::getShaderSources() const {
+std::vector<DDE::Shader> DDE::ShaderProgram::getShaderSources() const {
   return this->_shaderSources;
 }
 
-unsigned int ShaderProgram::getProgramObject() const {
+unsigned int DDE::ShaderProgram::getProgramObject() const {
   return this->_programObject;
 }
 
-bool ShaderProgram::_programLinkedSuccessfully(
+bool DDE::ShaderProgram::_programLinkedSuccessfully(
     unsigned int programObject) const {
   int successfulLinking;
 
@@ -31,9 +31,9 @@ bool ShaderProgram::_programLinkedSuccessfully(
   return successfulLinking;
 }
 
-void ShaderProgram::use() const { glUseProgram(this->_programObject); }
+void DDE::ShaderProgram::use() const { glUseProgram(this->_programObject); }
 
-void ShaderProgram::_linkProgram(std::vector<Shader> &sources) {
+void DDE::ShaderProgram::_linkProgram(std::vector<Shader> &sources) {
   this->_programObject = glCreateProgram();
 
   for (const Shader &source : sources) {

@@ -9,15 +9,18 @@
 #include <stdexcept>
 #include <string>
 
-std::string Shader::getSourceCode() const { return this->_sourceCode; }
+std::string DDE::Shader::getSourceCode() const { return this->_sourceCode; }
 
-unsigned int Shader::getType() const { return this->_type; }
+unsigned int DDE::Shader::getType() const { return this->_type; }
 
-unsigned int Shader::getShaderObject() const { return this->_shaderObject; }
+unsigned int DDE::Shader::getShaderObject() const {
+  return this->_shaderObject;
+}
 
-bool Shader::isAutoCompiled() const { return this->_autoCompile; }
+bool DDE::Shader::isAutoCompiled() const { return this->_autoCompile; }
 
-Shader::Shader(std::string &filePath, unsigned int shaderType, bool autoCompile)
+DDE::Shader::Shader(std::string &filePath, unsigned int shaderType,
+                    bool autoCompile)
     : _type{shaderType}, _autoCompile(autoCompile) {
 
   try {
@@ -31,8 +34,8 @@ Shader::Shader(std::string &filePath, unsigned int shaderType, bool autoCompile)
   }
 }
 
-Shader::Shader(std::string &&filePath, unsigned int shaderType,
-               bool autoCompile)
+DDE::Shader::Shader(std::string &&filePath, unsigned int shaderType,
+                    bool autoCompile)
     : _type{shaderType}, _autoCompile(autoCompile) {
 
   try {
@@ -46,7 +49,7 @@ Shader::Shader(std::string &&filePath, unsigned int shaderType,
   }
 }
 
-void Shader::compileShader(std::string &filePath) {
+void DDE::Shader::compileShader(std::string &filePath) {
   try {
     this->_sourceCode = this->_extractShaderSource(filePath);
     this->_compileShaderObject(this->_sourceCode.c_str(), this->_type);
@@ -56,11 +59,11 @@ void Shader::compileShader(std::string &filePath) {
   }
 }
 
-void Shader::setSourceCode(std::string &filePath) {
+void DDE::Shader::setSourceCode(std::string &filePath) {
   this->_sourceCode = this->_extractShaderSource(filePath);
 }
 
-std::string Shader::_extractShaderSource(std::string &filePath) const {
+std::string DDE::Shader::_extractShaderSource(std::string &filePath) const {
   std::ifstream shaderSourceFile(filePath);
 
   if (!shaderSourceFile.is_open()) {
@@ -78,7 +81,7 @@ std::string Shader::_extractShaderSource(std::string &filePath) const {
   return toReturn;
 }
 
-bool Shader::_shaderCompiledSuccessfully(unsigned int shaderObject) const {
+bool DDE::Shader::_shaderCompiledSuccessfully(unsigned int shaderObject) const {
 
   int successfulCompilation;
 
@@ -87,7 +90,8 @@ bool Shader::_shaderCompiledSuccessfully(unsigned int shaderObject) const {
   return successfulCompilation;
 }
 
-void Shader::_compileShaderObject(const char *sourceCode, unsigned int type) {
+void DDE::Shader::_compileShaderObject(const char *sourceCode,
+                                       unsigned int type) {
   this->_shaderObject = glCreateShader(type);
 
   glShaderSource(this->_shaderObject, 1, &sourceCode, nullptr);
