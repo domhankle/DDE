@@ -57,6 +57,7 @@ int main() {
   // Enable a Vertex Location
   glEnableVertexAttribArray(0);
 
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
   // Start the Rendering Enginge
   engine.start(drawFunction, std::ref(program));
 

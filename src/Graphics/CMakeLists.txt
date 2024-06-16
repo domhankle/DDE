@@ -1,0 +1,3 @@
+# Append the src files to SOURCES
+
+set(GRAPHICS_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Sprite.cpp PARENT_SCOPE)
