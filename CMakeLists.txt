@@ -4,6 +4,9 @@ project(dom_draw_engine)
 # Specify the minimum CMake Version
 cmake_minimum_required(VERSION 3.11)
 
+# Specify minimum C++ Compiler to Use
+set(CMAKE_CXX_STANDARD 20)
+
 # Specify generation of compile_comands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
