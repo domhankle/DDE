@@ -7,9 +7,18 @@
 
 namespace DDE {
 
+/**
+ * @class ShaderProgram
+ *
+ * This class handles the abstraction of a program object
+ * from OpenGL. It will attempt to link whatever Shader objects are
+ * passed to it.
+ */
 class ShaderProgram {
 private:
+  // All of the shader objects attached to this program.
   std::vector<DDE::Shader> _shaderSources;
+  // OpenGL program ID
   unsigned int _programObject;
 
   bool _programLinkedSuccessfully(unsigned int programObject) const;
