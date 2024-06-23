@@ -10,6 +10,8 @@ void drawFunction(DDE::ShaderProgram &program,
                   std::vector<DDE::Triangle> &triangles) {
   // Use our shader program
   program.use();
+
+  // Draw our triangles
   for (DDE::Triangle &triangle : triangles) {
     triangle.render();
   }
@@ -39,6 +41,7 @@ int main() {
   topVertex = DDE::Vertex(-0.75, 0.75, 1.0);
   DDE::Triangle triangle2(leftVertex, rightVertex, topVertex);
 
+  // Package our triangles
   std::vector<DDE::Triangle> triangles{triangle, triangle2};
 
   // Start the Rendering Enginge
