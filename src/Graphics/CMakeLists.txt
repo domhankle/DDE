@@ -1,6 +1,8 @@
 # Append the src files to SOURCES
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Vertex)
 
-set(GRAPHICS_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/Sprite.cpp 
-    ${VERTEX_SOURCES}
-    PARENT_SCOPE)
+set(GRAPHICS_SOURCES 
+  ${CMAKE_CURRENT_SOURCE_DIR}/Sprite.cpp 
+  ${CMAKE_CURRENT_SOURCE_DIR}/Shape.cpp
+  ${VERTEX_SOURCES}
+  PARENT_SCOPE)

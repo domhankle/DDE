@@ -1,21 +1,18 @@
 #include <DDE/Engine/RenderEngine.hpp>
+#include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
-#include <vector>
 
+#include "DDE/Graphics/Shape.hpp"
 #include "Glad/glad/glad.h"
 
-// Vertex Array Object
-unsigned int vao;
-
-void drawFunction(DDE::ShaderProgram &program) {
+void drawFunction(DDE::ShaderProgram &program,
+                  std::vector<DDE::Triangle> &triangles) {
   // Use our shader program
   program.use();
-
-  // Bind our VAO holding vertex data
-  glBindVertexArray(vao);
-  // Draw call to start the render pipeline
-  glDrawArrays(GL_TRIANGLES, 0, 3);
+  for (DDE::Triangle &triangle : triangles) {
+    triangle.render();
+  }
 }
 
 int main() {
@@ -30,36 +27,22 @@ int main() {
 
   DDE::ShaderProgram program{{vertexShader, fragmentShader}};
 
-  // Create our Vertex Buffer object
-  unsigned int vbo;
-  glGenBuffers(1, &vbo);
+  // Triangle one
+  DDE::Vertex leftVertex = DDE::Vertex(-0.75, -0.75, 1.0);
+  DDE::Vertex rightVertex = DDE::Vertex(0.75, -0.75, 1.0);
+  DDE::Vertex topVertex = DDE::Vertex(-0.75, 0.75, 1.0);
+  DDE::Triangle triangle(leftVertex, rightVertex, topVertex);
 
-  // Create our Vertex Array object
-  glGenVertexArrays(1, &vao);
+  // Triangle two
+  leftVertex = DDE::Vertex(0.75, 0.75, 1.0);
+  rightVertex = DDE::Vertex(0.75, -0.75, 1.0);
+  topVertex = DDE::Vertex(-0.75, 0.75, 1.0);
+  DDE::Triangle triangle2(leftVertex, rightVertex, topVertex);
 
-  // Bind our Vertex Array object to capture the data we configure
-  glBindVertexArray(vao);
+  std::vector<DDE::Triangle> triangles{triangle, triangle2};
 
-  // Bind our Array Buffer to the GL_ARRAY_BUFFER target
-  glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-  // Our vertices
-  std::vector<float> vertices = {-0.75, -0.75, 1.0,  0.75, -0.75,
-                                 1.0,   0.0,   0.75, 1.0};
-
-  // Store our data in a location to send to the GPU
-  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float),
-               vertices.data(), GL_STATIC_DRAW);
-
-  // Describe our vertices for the GPU
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-
-  // Enable a Vertex Location
-  glEnableVertexAttribArray(0);
-
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
   // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(program));
+  engine.start(drawFunction, std::ref(program), std::ref(triangles));
 
   return 0;
 }
