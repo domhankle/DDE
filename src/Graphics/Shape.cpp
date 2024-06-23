@@ -16,7 +16,6 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
 }
 
 void DDE::Triangle::render() {
-  std::cout << "Drawing the triangle" << std::endl;
   glBindVertexArray(this->_vertexArrayObject);
   glDrawArrays(GL_TRIANGLES, 0, 3);
 }
