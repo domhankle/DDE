@@ -45,7 +45,6 @@ class Shader {
          bool autoCompile = true);
   ~Shader() = default;
   Shader() = delete;
-  ;
 
   void compileShader(std::string &filePath);
 };

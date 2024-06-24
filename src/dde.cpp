@@ -1,10 +1,10 @@
+#include <Glad/glad/glad.h>
+
 #include <DDE/Engine/RenderEngine.hpp>
+#include <DDE/Graphics/Shape.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
-
-#include "DDE/Graphics/Shape.hpp"
-#include "Glad/glad/glad.h"
 
 void drawFunction(DDE::ShaderProgram &program,
                   std::vector<DDE::Triangle> &triangles) {
@@ -18,7 +18,6 @@ void drawFunction(DDE::ShaderProgram &program,
 }
 
 int main() {
-
   // Create the Render Engine
   DDE::RenderEngine engine;
 
