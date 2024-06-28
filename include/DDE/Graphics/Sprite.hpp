@@ -4,6 +4,7 @@
 
 namespace DDE {
 
+// TODO: Implement and Document this class
 class Sprite {
 
 private:
