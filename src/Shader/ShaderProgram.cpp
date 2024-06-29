@@ -61,7 +61,9 @@ bool DDE::ShaderProgram::_programLinkedSuccessfully(
  * Used to tell OpenGL to use the internal OpenGL program object
  * on this ShaderProgram object for rendering.
  */
-void DDE::ShaderProgram::use() const { glUseProgram(this->_programObject); }
+void DDE::ShaderProgram::activate() const {
+  glUseProgram(this->_programObject);
+}
 
 /**
  * This function is used to actually execute the OpenGL

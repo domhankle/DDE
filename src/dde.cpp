@@ -9,7 +9,7 @@
 void drawFunction(DDE::ShaderProgram &program,
                   std::vector<DDE::Triangle> &triangles) {
   // Use our shader program
-  program.use();
+  program.activate();
 
   // Draw our triangles
   for (DDE::Triangle &triangle : triangles) {

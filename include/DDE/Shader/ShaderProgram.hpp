@@ -27,7 +27,7 @@ private:
 public:
   std::vector<DDE::Shader> getShaderSources() const;
   unsigned int getProgramObject() const;
-  void use() const;
+  void activate() const;
 
   ShaderProgram(std::initializer_list<Shader> shaders);
 

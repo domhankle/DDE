@@ -15,8 +15,13 @@ namespace DDE {
 class Shape {
 
 protected:
+  // The vertices for the shape to draw
   std::vector<float> _vertices;
+
+  // The OpenGL VBO object associated with this shape
   unsigned int _vertexBufferObject;
+
+  // The OpenGL VAO object associated with this shape
   unsigned int _vertexArrayObject;
   void _initializeGLObjects();
   virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
@@ -52,14 +57,6 @@ class Quad : Shape {
 
 private:
   void _setUpVertexData(std::vector<float> &vertices);
-
-public:
-  Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo, DDE::Vertex &vertexThree,
-       DDE::Vertex &vertexFour);
-  Quad() = delete;
-  ~Quad() = default;
-
-  void render();
-}
+};
 
 } // namespace DDE
