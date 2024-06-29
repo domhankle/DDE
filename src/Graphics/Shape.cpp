@@ -3,6 +3,27 @@
 #include <iostream>
 
 /**
+ * This private function is used to create our
+ * VAO and VBO associated with this Triangle object.
+ */
+void DDE::Shape::_initializeGLObjects() {
+
+  glGenVertexArrays(1, &this->_vertexArrayObject);
+  glBindVertexArray(this->_vertexArrayObject);
+
+  glGenBuffers(1, &this->_vertexBufferObject);
+  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
+}
+
+/**
+ * The constructor for a Shape object only accepts
+ * vertex data.
+ */
+DDE::Shape::Shape(std::initializer_list<float> vertices) : _vertices{vertices} {
+  this->_initializeGLObjects();
+}
+
+/**
  * Triangle constructor
  *
  * @param vertexOne The first vertex of the triangle
@@ -11,11 +32,9 @@
  */
 DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
                         DDE::Vertex &vertexThree)
-    : _vertices{vertexOne.x,   vertexOne.y,   vertexOne.z,
-                vertexTwo.x,   vertexTwo.y,   vertexTwo.z,
-                vertexThree.x, vertexThree.y, vertexThree.z} {
+    : Shape({vertexOne.x, vertexOne.y, vertexOne.z, vertexTwo.x, vertexTwo.y,
+             vertexTwo.z, vertexThree.x, vertexThree.y, vertexThree.z}) {
 
-  this->_initializeGLObjects();
   this->_setUpVertexData(this->_vertices);
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -29,19 +48,6 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
 void DDE::Triangle::render() {
   glBindVertexArray(this->_vertexArrayObject);
   glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
-/**
- * This private function is used to create our
- * VAO and VBO associated with this Triangle object.
- */
-void DDE::Triangle::_initializeGLObjects() {
-
-  glGenVertexArrays(1, &this->_vertexArrayObject);
-  glBindVertexArray(this->_vertexArrayObject);
-
-  glGenBuffers(1, &this->_vertexBufferObject);
-  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
 }
 
 /**

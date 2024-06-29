@@ -7,25 +7,36 @@
 namespace DDE {
 
 /**
+ * @class Shape
+ *
+ * This is the abstract base class for all of the primitive
+ * shapes that can be rendered in the DDE library.
+ */
+class Shape {
+
+protected:
+  std::vector<float> _vertices;
+  unsigned int _vertexBufferObject;
+  unsigned int _vertexArrayObject;
+  void _initializeGLObjects();
+  virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
+
+public:
+  virtual void render() = 0;
+  Shape() = delete;
+  Shape(std::initializer_list<float> vertices);
+};
+
+/**
  * @class Triangle
  *
  * This class is used to handle abstracting
  * the drawing of a Triangle Primitive in
  * OpenGL.
  */
-class Triangle {
+class Triangle : Shape {
 
 private:
-  // The vertices associated with this Triangle
-  std::vector<float> _vertices;
-
-  // The OpenGL VBO for this Triangle
-  unsigned int _vertexBufferObject;
-
-  // The OpenGL VAO for this Triangle
-  unsigned int _vertexArrayObject;
-
-  void _initializeGLObjects();
   void _setUpVertexData(std::vector<float> &vertices);
 
 public:

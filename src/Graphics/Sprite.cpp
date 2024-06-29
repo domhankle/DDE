@@ -5,10 +5,9 @@
 #include <vector>
 
 DDE::Sprite::Sprite() {
-  glGenVertexArrays(1, &this->_spriteObject);
-  glBindVertexArray(this->_spriteObject);
 
   try {
+    this->_initializeGLObjects();
 
   } catch (std::exception &exception) {
     std::cerr << "Exception: " << exception.what() << "\n";
@@ -18,7 +17,14 @@ DDE::Sprite::Sprite() {
 }
 
 unsigned int DDE::Sprite::getSpriteObject() const {
-  return this->_spriteObject;
+  return this->_vertexArrayObject;
 }
 
 DDE::Vertex DDE::Sprite::getPosition() const { return this->_position; }
+
+void DDE::Sprite::_initializeGLObjects() {
+  glGenVertexArrays(1, &this->_vertexArrayObject);
+  glBindVertexArray(this->_vertexArrayObject);
+  glGenBuffers(1, &this->_vertexBufferObject);
+  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
+}

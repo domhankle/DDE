@@ -8,11 +8,13 @@ namespace DDE {
 class Sprite {
 
 private:
-  unsigned int _spriteObject;
-  unsigned int _vbo;
+  unsigned int _vertexArrayObject;
+  unsigned int _vertexBufferObject;
   DDE::Vertex _position;
   float _width;
   float _height;
+
+  void _initializeGLObjects();
 
 public:
   unsigned int getSpriteObject() const;
