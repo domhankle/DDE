@@ -67,3 +67,10 @@ void DDE::Triangle::_setUpVertexData(std::vector<float> &vertices) {
 
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 }
+
+void DDE::Quad::_setUpVertexData(std::vector<float> &vertices) {}
+DDE::Quad::Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
+                DDE::Vertex &vertexThree, DDE::Vertex &vertexFour)
+    : Shape({vertexOne.x, vertexOne.y, vertexOne.z, vertexTwo.x, vertexTwo.y,
+             vertexTwo.z, vertexThree.x, vertexThree.y, vertexThree.z,
+             vertexFour.x, vertexFour.y, vertexFour.z}) {}

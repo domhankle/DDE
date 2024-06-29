@@ -48,4 +48,18 @@ public:
   void render();
 };
 
+class Quad : Shape {
+
+private:
+  void _setUpVertexData(std::vector<float> &vertices);
+
+public:
+  Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo, DDE::Vertex &vertexThree,
+       DDE::Vertex &vertexFour);
+  Quad() = delete;
+  ~Quad() = default;
+
+  void render();
+}
+
 } // namespace DDE
