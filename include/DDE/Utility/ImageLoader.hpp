@@ -14,6 +14,7 @@ class ImageLoader {
 
 public:
   static unsigned char *loadImage(std::string filePath);
+  static void freeImage(unsigned char *data);
 };
 
 } // namespace DDE

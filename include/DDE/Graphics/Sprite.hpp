@@ -5,18 +5,31 @@
 
 namespace DDE {
 
-// TODO: Implement and Document this class
+/**
+ * @class Sprite
+ *
+ * This class handles abstracting the process
+ * of creating a Sprite object connected to a PNG
+ * that can be drawn to the screen.
+ */
 class Sprite {
 
 private:
+  // Internal OpenGL VAO
   unsigned int _vertexArrayObject;
+  // Internal OpenGL VBO
   unsigned int _vertexBufferObject;
+  // Internal OpenGL EBO
   unsigned int _elementBufferObject;
-  unsigned int _textureObject;
+  // Position of the top left of the sprite
   DDE::Vertex _position;
+  // Width of the sprite
   float _width;
+  // Height of the sprite
   float _height;
+  // OpenGL vertex data
   std::vector<float> _vertices;
+  // Indices for the EBO
   const unsigned int _bounds[6] = {0, 1, 2, 1, 2, 3};
 
   void _initializeGLObjects();

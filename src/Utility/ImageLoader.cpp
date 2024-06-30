@@ -15,6 +15,9 @@
  */
 unsigned char *DDE::ImageLoader::loadImage(std::string filePath) {
 
+  // Flip images vertically on load
+  stbi_set_flip_vertically_on_load(true);
+
   // Setting up stbi variables
   int width, height, channels;
   const char *imagePath = filePath.c_str();
@@ -33,4 +36,16 @@ unsigned char *DDE::ImageLoader::loadImage(std::string filePath) {
   }
 
   return image;
+}
+
+void DDE::ImageLoader::freeImage(unsigned char *data) {
+  if (data == nullptr) {
+    std::stringstream ssError;
+
+    ssError << "Failed to free image data!\n";
+
+    throw std::runtime_error(ssError.str());
+  }
+
+  stbi_image_free(data);
 }
