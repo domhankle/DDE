@@ -1,5 +1,5 @@
 #pragma once
-#include <DDE/Utility/ImageLoader.hpp>
+#include <DDE/Utility/Image.hpp>
 #include <Glad/glad/glad.h>
 
 namespace DDE {

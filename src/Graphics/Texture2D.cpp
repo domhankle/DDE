@@ -5,12 +5,12 @@
 DDE::Texture2D::Texture2D(std::string &filePath) : _imageData(nullptr) {
 
   try {
-    this->_imageData = ImageLoader::loadImage(filePath);
+    this->_imageData = Image::loadImage(filePath);
 
     this->_initializeGLObjects();
     this->_configureTexture();
 
-    ImageLoader::freeImage(this->_imageData);
+    Image::freeImage(this->_imageData);
   } catch (std::exception &exception) {
     std::cerr << "Exception: " << exception.what() << "\n";
     exit(EXIT_FAILURE);
