@@ -19,11 +19,16 @@ private:
   int _height;
   int _channelCount;
   std::string _filePath;
-  friend void swap(Image &myImage, Image &otherImage);
 
 public:
   static unsigned char *loadImage(std::string filePath);
   static void freeImage(unsigned char *data);
+
+  unsigned char *getImageData() const;
+  int getWidth() const;
+  int getHeight() const;
+  int getChannelCount() const;
+  std::string getFilePath() const;
 
   Image() = delete;
   Image(std::string &filePath);

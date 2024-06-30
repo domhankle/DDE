@@ -13,13 +13,14 @@
  * @param width The width of the sprite
  * @param height The height of the sprite
  */
-DDE::Sprite::Sprite(DDE::Vertex position, float width, float height)
-    : _position{position.x, position.y, position.z, position.w}, _width(width),
-      _height(height) {
+DDE::Sprite::Sprite(DDE::Vertex position, DDE::Texture2D &texture)
+    : _position{position.x, position.y, position.z, position.w},
+      _texture{texture} {
 
   try {
     this->_initializeGLObjects();
-    this->_setUpVertexData(this->_position, this->_width, this->_height);
+    this->_setUpVertexData(this->_position, this->_texture.getWidth(),
+                           this->_texture.getHeight());
   } catch (std::exception &exception) {
     std::cerr << "Exception: " << exception.what() << "\n";
     exit(EXIT_FAILURE);
@@ -52,18 +53,22 @@ void DDE::Sprite::_initializeGLObjects() {
  */
 void DDE::Sprite::_setUpVertexData(DDE::Vertex &origin, float width,
                                    float height) {
-  this->_vertices = {origin.x,         origin.y,          origin.z,
-                     origin.x + width, origin.y,          origin.z,
-                     origin.x,         origin.y - height, origin.z,
-                     origin.x + width, origin.y - height, origin.z};
+  this->_vertices = {origin.x,         origin.y,          0.0f, 1.0f,
+                     origin.x + width, origin.y,          1.0f, 1.0f,
+                     origin.x,         origin.y - height, 0.0f, 0.0f,
+                     origin.x + width, origin.y - height, 1.0f, 0.0f};
 
   glBufferData(GL_ARRAY_BUFFER, this->_vertices.size() * sizeof(float),
                this->_vertices.data(), GL_STATIC_DRAW);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(this->_bounds), this->_bounds,
                GL_STATIC_DRAW);
 
+  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float),
+                        (void *)(2 * sizeof(float)));
+  glEnableVertexAttribArray(1);
 
   glBindVertexArray(0);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -75,8 +80,10 @@ void DDE::Sprite::_setUpVertexData(DDE::Vertex &origin, float width,
  * render the sprite object.
  */
 void DDE::Sprite::render() {
+  this->_texture.activate();
   glBindVertexArray(this->_vertexArrayObject);
   glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+  this->_texture.deactivate();
 }
 
 /**
@@ -96,19 +103,3 @@ unsigned int DDE::Sprite::getSpriteObject() const {
  * @returns DDE::Vertex
  */
 DDE::Vertex DDE::Sprite::getPosition() const { return this->_position; }
-
-/**
- * This function is used to get the height of the
- * sprite object.
- *
- * @returns float
- */
-float DDE::Sprite::getHeight() const { return this->_height; }
-
-/**
- * This function is used to get the width of the
- * sprite object.
- *
- * @returns float
- */
-float DDE::Sprite::getWidth() const { return this->_width; }

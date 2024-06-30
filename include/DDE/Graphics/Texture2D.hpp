@@ -8,14 +8,23 @@ class Texture2D {
 
 private:
   unsigned int _textureObject;
-  unsigned char *_imageData;
+  DDE::Image _textureImage;
+
+  int _height;
+  int _width;
 
   void _initializeGLObjects();
   void _configureTexture();
 
 public:
+  void activate();
+  void deactivate();
+
+  int getHeight() const;
+  int getWidth() const;
+
   Texture2D() = delete;
-  Texture2D(std::string &filePath);
+  Texture2D(DDE::Image &image);
   ~Texture2D() = default;
 };
 

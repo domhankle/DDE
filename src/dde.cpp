@@ -24,8 +24,6 @@ int main() {
 
   DDE::ShaderProgram program{{vertexShader, fragmentShader}};
 
-  DDE::Sprite mySprite{DDE::Vertex(-1.0f, 1.0f), 0.25f, 0.5f};
-
   // Start the Rendering Enginge
   engine.start(drawFunction, std::ref(program), std::ref(mySprite));
 

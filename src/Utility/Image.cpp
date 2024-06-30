@@ -90,3 +90,9 @@ DDE::Image &DDE::Image::operator=(Image otherImage) {
   swap(*this, otherImage);
   return *this;
 }
+
+int DDE::Image::getWidth() const { return this->_width; }
+int DDE::Image::getHeight() const { return this->_height; }
+int DDE::Image::getChannelCount() const { return this->_channelCount; }
+std::string DDE::Image::getFilePath() const { return this->_filePath; }
+unsigned char *DDE::Image::getImageData() const { return this->_imageData; }

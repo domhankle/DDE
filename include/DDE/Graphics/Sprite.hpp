@@ -1,5 +1,6 @@
 #pragma once
-#include "DDE/Graphics/Vertex/Vertex.hpp"
+#include <DDE/Graphics/Texture2D.hpp>
+#include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
 #include <vector>
 
@@ -23,10 +24,7 @@ private:
   unsigned int _elementBufferObject;
   // Position of the top left of the sprite
   DDE::Vertex _position;
-  // Width of the sprite
-  float _width;
-  // Height of the sprite
-  float _height;
+  DDE::Texture2D _texture;
   // OpenGL vertex data
   std::vector<float> _vertices;
   // Indices for the EBO
@@ -42,7 +40,7 @@ public:
   float getWidth() const;
   void render();
 
-  Sprite(DDE::Vertex position, float width, float height);
+  Sprite(DDE::Vertex position, DDE::Texture2D &texture);
   Sprite() = delete;
   ~Sprite() = default;
 };
