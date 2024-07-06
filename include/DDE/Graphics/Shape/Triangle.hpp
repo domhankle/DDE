@@ -1,4 +1,5 @@
 #pragma once
+#include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Shape/Shape.hpp>
 
 namespace DDE {
