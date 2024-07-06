@@ -7,10 +7,10 @@
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
 
-void drawFunction(DDE::ShaderProgram &program, DDE::Sprite &sprite) {
+void drawFunction(DDE::ShaderProgram &program, DDE::Triangle &triangle) {
   // Use our shader program
   program.activate();
-  sprite.render();
+  triangle.render();
 }
 
 int main() {
@@ -24,8 +24,11 @@ int main() {
 
   DDE::ShaderProgram program{{vertexShader, fragmentShader}};
 
+  DDE::Vertex v1{0.0f, 1.0f}, v2{-1.0f, -1.0f}, v3{1.0f, -1.0f};
+  DDE::Triangle triangle{v1, v2, v3};
+
   // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(program), std::ref(mySprite));
+  engine.start(drawFunction, std::ref(program), std::ref(triangle));
 
   return 0;
 }
