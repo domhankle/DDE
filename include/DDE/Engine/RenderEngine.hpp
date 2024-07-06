@@ -15,7 +15,7 @@ namespace DDE {
  * just need to worry about making a function that handles the drawing.
  */
 class RenderEngine {
- private:
+private:
   // GLFW window
   GLFWwindow *_window;
 
@@ -24,7 +24,7 @@ class RenderEngine {
   void _configureWindow();
   void _initializeGLAD();
 
- public:
+public:
   RenderEngine();
   ~RenderEngine();
 
@@ -42,7 +42,7 @@ class RenderEngine {
    * @usage
    *
    * auto myFunction = [](int x, int y){ std::cout << "Drawing " << x + y <<
-   * std::endl; }
+   * std::endl; };
    *
    * DDE::RenderEngine engine;
    * engine.start(myFunction, 5, 10);
@@ -63,4 +63,4 @@ class RenderEngine {
   }
 };
 
-}  // namespace DDE
+} // namespace DDE
