@@ -1,4 +1,5 @@
-#include "Glad/glad/glad.h"
+#include <Glad/glad/glad.h>
+
 #include <DDE/Graphics/Shape/Shape.hpp>
 #include <iostream>
 
@@ -7,7 +8,6 @@
  * VAO and VBO associated with this Triangle object.
  */
 void DDE::Shape::_initializeGLObjects() {
-
   glGenVertexArrays(1, &this->_vertexArrayObject);
   glBindVertexArray(this->_vertexArrayObject);
 
