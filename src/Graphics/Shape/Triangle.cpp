@@ -1,3 +1,4 @@
+#include "DDE/Engine/ShaderEngine.hpp"
 #include <DDE/Graphics/Shape/Triangle.hpp>
 
 /**
@@ -23,6 +24,7 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
  * the triangle object to the screen.
  */
 void DDE::Triangle::render() {
+  DDE::ShaderEngine::ActivateShaderStage(this->_shaderPipelineID);
   glBindVertexArray(this->_vertexArrayObject);
   glDrawArrays(GL_TRIANGLES, 0, 3);
 }

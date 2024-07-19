@@ -14,7 +14,7 @@ namespace DDE {
  * This is the abstract base class for all of the primitive
  * shapes that can be rendered in the DDE library.
  */
-class Shape : Drawable {
+class Shape : protected DDE::Drawable {
 
 protected:
   // The vertices for the shape to draw

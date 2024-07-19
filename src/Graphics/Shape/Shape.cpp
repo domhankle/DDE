@@ -1,6 +1,5 @@
-#include <Glad/glad/glad.h>
-
 #include <DDE/Graphics/Shape/Shape.hpp>
+#include <Glad/glad/glad.h>
 
 /**
  * This private function is used to create our
