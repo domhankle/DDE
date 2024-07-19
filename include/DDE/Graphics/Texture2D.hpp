@@ -13,10 +13,14 @@ namespace DDE {
 class Texture2D {
 
 private:
+  // The OpenGL texture object
   unsigned int _textureObject;
+  // The image associated with this texture
   DDE::Image _textureImage;
 
+  // The height of the texture
   int _height;
+  // The width of the texture
   int _width;
 
   void _initializeGLObjects();
