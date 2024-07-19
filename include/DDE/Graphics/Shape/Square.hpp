@@ -7,6 +7,10 @@ namespace DDE {
 class Square : public DDE::Shape {
 
 private:
+  std::vector<unsigned int> _indices;
+  unsigned int _elementBufferObject;
+  unsigned int _vertexBufferObject;
+
   void _setUpVertexData(std::vector<float> &vertices);
 
 public:
