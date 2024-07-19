@@ -1,4 +1,3 @@
-#include "DDE/Engine/ShaderEngine.hpp"
 #include <DDE/Graphics/Shape/Triangle.hpp>
 
 /**
