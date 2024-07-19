@@ -4,6 +4,12 @@
 
 namespace DDE {
 
+/**
+ * @class Texture2D
+ *
+ * This class handles abstracting away a 2D texture
+ * that can be generated in OpenGL.
+ */
 class Texture2D {
 
 private:
