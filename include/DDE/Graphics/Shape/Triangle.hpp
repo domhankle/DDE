@@ -11,7 +11,7 @@ namespace DDE {
  * the drawing of a Triangle Primitive in
  * OpenGL.
  */
-class Triangle : protected DDE::Shape {
+class Triangle : public DDE::Shape {
 
 private:
   void _setUpVertexData(std::vector<float> &vertices);

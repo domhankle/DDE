@@ -6,3 +6,7 @@
  */
 DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline)
     : _shaderPipelineID(shaderPipeline) {}
+
+DDE::ShaderStage DDE::Drawable::getShaderPipeline() const {
+  return this->_shaderPipelineID;
+}
