@@ -1,6 +1,7 @@
 #include <Glad/glad/glad.h>
 
 #include <DDE/Engine/RenderEngine.hpp>
+#include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Shape/Triangle.hpp>
 #include <DDE/Graphics/Sprite.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
