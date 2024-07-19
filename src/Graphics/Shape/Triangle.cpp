@@ -36,6 +36,8 @@ void DDE::Triangle::render() {
  *                 this Triangle object
  */
 void DDE::Triangle::_setUpVertexData(std::vector<float> &vertices) {
+  glGenBuffers(1, &this->_vertexBufferObject);
+  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
 
   glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float),
                vertices.data(), GL_STATIC_DRAW);

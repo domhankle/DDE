@@ -16,6 +16,9 @@ class Triangle : public DDE::Shape {
 private:
   void _setUpVertexData(std::vector<float> &vertices);
 
+  // The OpenGL VBO object associated with this shape
+  unsigned int _vertexBufferObject;
+
 public:
   Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
            DDE::Vertex &vertexThree);

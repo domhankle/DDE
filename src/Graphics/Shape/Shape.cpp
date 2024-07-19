@@ -8,9 +8,6 @@
 void DDE::Shape::_initializeGLObjects() {
   glGenVertexArrays(1, &this->_vertexArrayObject);
   glBindVertexArray(this->_vertexArrayObject);
-
-  glGenBuffers(1, &this->_vertexBufferObject);
-  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
 }
 
 /**
