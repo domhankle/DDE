@@ -1,5 +1,6 @@
 #include <DDE/Graphics/Shape/Shape.hpp>
 #include <Glad/glad/glad.h>
+#include <iostream>
 
 /**
  * This private function is used to create our
@@ -13,6 +14,8 @@ void DDE::Shape::_initializeGLObjects() {
 /**
  * The constructor for a Shape object only accepts
  * vertex data.
+ *
+ * @param vertices The vertex data
  */
 DDE::Shape::Shape(std::initializer_list<float> vertices)
     : _vertices{vertices}, Drawable(DDE::ShaderStage::PRIMITIVE) {

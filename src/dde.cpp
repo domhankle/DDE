@@ -1,4 +1,4 @@
-#include "DDE/Graphics/Shape/Square.hpp"
+#include "DDE/Graphics/Shape/Quad.hpp"
 #include <Glad/glad/glad.h>
 
 #include <DDE/Engine/RenderEngine.hpp>
@@ -10,7 +10,7 @@
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
 
-void drawFunction(DDE::Pencil &pencil, DDE::Square &square) {
+void drawFunction(DDE::Pencil &pencil, DDE::Quad &square) {
   pencil.draw(square);
 }
 
@@ -18,9 +18,10 @@ int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Vertex v1{-1.0f, -1.0f}, v2{1.0f, -1.0f}, v3{-1.0f, 1.0f},
-      v4{1.0f, 1.0f};
-  DDE::Square square{v1, v2, v3, v4};
+  DDE::Vertex v1{-0.10f, -0.32f}, v2{0.75f, 0.33f}, v3{0.75f, -0.35f},
+      v4{-0.2f, 0.35f};
+
+  DDE::Quad square{v1, v2, v3, v4};
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge
