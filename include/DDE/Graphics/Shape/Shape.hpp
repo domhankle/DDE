@@ -1,6 +1,5 @@
 #pragma once
 
-#include "DDE/Utility/ShaderTypes.hpp"
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
@@ -25,10 +24,11 @@ protected:
   void _initializeGLObjects();
   virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
   Shape(std::initializer_list<float> vertices);
+  Shape();
 
 public:
   virtual void render() = 0;
-  Shape() = delete;
+  ~Shape() = default;
 };
 
 } // namespace DDE

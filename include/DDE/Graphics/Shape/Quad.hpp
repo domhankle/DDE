@@ -5,10 +5,10 @@
 namespace DDE {
 
 /**
- * @class Square
+ * @class Quad
  *
- * This class is utilized to abstract the process
- * away of creating a Square that can be drawn to the screen.
+ * This class is utilized to abstract the process away of
+ * creating an arbitrary Quad that can be drawn to the screen.
  */
 class Quad : public DDE::Shape {
 
@@ -22,9 +22,7 @@ private:
 
   void _setUpVertexData(std::vector<float> &vertices);
   void _setUpElementsBuffer(std::vector<unsigned int> &indices);
-
-  std::vector<float> _reorganizeVertices(std::vector<DDE::Vertex> &vertices);
-  DDE::Vertex _getCentroidVertex(std::vector<DDE::Vertex> &vertices);
+  std::vector<float> _reorganizeVertices(std::vector<DDE::Vertex> &&vertices);
 
 public:
   Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo, DDE::Vertex &vertexThree,

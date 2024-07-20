@@ -1,36 +1,26 @@
-#include "DDE/Graphics/Vertex/Vertex.hpp"
-#include "Glad/glad/glad.h"
 #include <DDE/Graphics/Shape/Quad.hpp>
+#include <DDE/Graphics/Vertex/Vertex.hpp>
+#include <Glad/glad/glad.h>
 #include <algorithm>
-#include <iostream>
-#include <ostream>
-#include <utility>
 
 /**
  * Constructor for a Square shape. It handles constructing
  * the vertex data including the buffer objects and Vertex
  * Array object.
+ *
+ * @param vertexOne First corner of the quad
+ * @param vertexTwo Second corner of the quad
+ * @param vertexThree Third corner of the quad
+ * @param vertexFour Fourth corner of the quad
  */
 DDE::Quad::Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
                 DDE::Vertex &vertexThree, DDE::Vertex &vertexFour)
-    : Shape({vertexOne.x, vertexOne.y, vertexOne.z, vertexTwo.x, vertexTwo.y,
-             vertexTwo.z, vertexThree.x, vertexThree.y, vertexThree.z,
-             vertexFour.x, vertexFour.y, vertexFour.z}),
-      _indices{0, 1, 4, 1, 2, 4, 2, 3, 4, 3, 0, 4} {
+    : Shape(), _indices{0, 1, 2, 1, 2, 3} {
 
-  std::vector<DDE::Vertex> vertices{vertexOne, vertexTwo, vertexThree,
-                                    vertexFour};
-  for (int i = 0; i < this->_vertices.size(); i += 3) {
-    std::cout << "(" << this->_vertices[i] << ", " << this->_vertices[i + 1]
-              << ", " << this->_vertices[i + 2] << ")\n";
-  }
-  std::cout << "----------------------" << std::endl;
-  this->_vertices = this->_reorganizeVertices(vertices);
+  // We initialize the vertices at the Quad class rather than Shape class.
+  this->_vertices = this->_reorganizeVertices(
+      {vertexOne, vertexTwo, vertexThree, vertexFour});
 
-  for (int i = 0; i < this->_vertices.size(); i += 3) {
-    std::cout << "(" << this->_vertices[i] << ", " << this->_vertices[i + 1]
-              << ", " << this->_vertices[i + 2] << ")\n";
-  }
   this->_setUpVertexData(this->_vertices);
 
   glBindVertexArray(0);
@@ -42,7 +32,7 @@ DDE::Quad::Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
  */
 void DDE::Quad::render() {
   glBindVertexArray(this->_vertexArrayObject);
-  glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 /**
@@ -78,16 +68,25 @@ void DDE::Quad::_setUpVertexData(std::vector<float> &vertices) {
   this->_setUpElementsBuffer(this->_indices);
 }
 
+/**
+ * This function handles creating a vector of floats that
+ * represents the vertices in such a way we can guarantee
+ * the quad will NOT be rendered in a way where the two triangles
+ * used to make it intersect eachother.
+ *
+ * @param vertices The vertices passed to create this quad
+ * @returns A vector of floats representing the properly ordered vertices
+ */
 std::vector<float>
-DDE::Quad::_reorganizeVertices(std::vector<DDE::Vertex> &vertices) {
+DDE::Quad::_reorganizeVertices(std::vector<DDE::Vertex> &&vertices) {
 
-  DDE::Vertex centroid = this->_getCentroidVertex(vertices);
+  // Sort the vector in ascending order based on vertices y values
+  std::sort(vertices.begin(), vertices.end(),
+            [&](DDE::Vertex vert1, DDE::Vertex vert2) {
+              return std::min(vert1.y, vert2.y);
+            });
 
-  std::sort(
-      vertices.begin(), vertices.end(),
-      [&](DDE::Vertex vert1, DDE::Vertex vert2) { return vert1.y < vert2.y; });
-  if (vertices.at(0).x == vertices.at(1).x) {
-  }
+  // Define the four main point of the quad
   DDE::Vertex bottomLeft =
       vertices.at(0).x < vertices.at(1).x ? vertices.at(0) : vertices.at(1);
   DDE::Vertex topLeft =
@@ -97,25 +96,9 @@ DDE::Quad::_reorganizeVertices(std::vector<DDE::Vertex> &vertices) {
   DDE::Vertex bottomRight =
       vertices.at(0).x > vertices.at(1).x ? vertices.at(0) : vertices.at(1);
 
-  return std::vector<float>{
-      bottomLeft.x,  bottomLeft.y,  bottomLeft.z, topLeft.x,     topLeft.y,
-      topLeft.z,     topRight.x,    topRight.y,   bottomRight.z, bottomRight.x,
-      bottomRight.y, bottomRight.z, centroid.x,   centroid.y,    centroid.z};
-}
-
-DDE::Vertex DDE::Quad::_getCentroidVertex(std::vector<DDE::Vertex> &vertices) {
-
-  DDE::Vertex centroid;
-
-  for (DDE::Vertex &vertex : vertices) {
-    centroid.x += vertex.x;
-    centroid.y += vertex.y;
-    centroid.z += vertex.z;
-  }
-
-  centroid.x /= vertices.size();
-  centroid.y /= vertices.size();
-  centroid.z /= vertices.size();
-
-  return centroid;
+  // Return a vector of floats with the proper ordering of the coordinates
+  return std::vector<float>{bottomLeft.x,  bottomLeft.y,  bottomLeft.z,
+                            topLeft.x,     topLeft.y,     topLeft.z,
+                            bottomRight.x, bottomRight.y, bottomRight.z,
+                            topRight.x,    topRight.y,    topRight.z};
 }

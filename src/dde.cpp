@@ -18,8 +18,7 @@ int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Vertex v1{-0.10f, -0.32f}, v2{0.75f, 0.33f}, v3{0.75f, -0.35f},
-      v4{-0.2f, 0.35f};
+  DDE::Vertex v1{0.0f, 0.5f}, v3{0.5f, 0.0f}, v4{-0.5f, 0.0f}, v2{0.0f, -0.5f};
 
   DDE::Quad square{v1, v2, v3, v4};
   DDE::Pencil pencil;
