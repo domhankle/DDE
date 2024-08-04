@@ -13,6 +13,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Include GLFW Library
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glfw)
 
+# Include GLM Library
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glm)
+
 # Include src directory
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -23,4 +26,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_executable(dom_draw_engine ${SOURCES})
 
 # Link the libraries to the project executable
-target_link_libraries(dom_draw_engine glfw)
+target_link_libraries(dom_draw_engine glfw glm)
