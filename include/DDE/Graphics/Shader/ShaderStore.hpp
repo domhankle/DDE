@@ -1,7 +1,7 @@
 #pragma once
 
-#include <DDE/Shader/Shader.hpp>
-#include <DDE/Shader/ShaderProgram.hpp>
+#include <DDE/Graphics/Shader/Shader.hpp>
+#include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
 #include <unordered_map>
 
@@ -22,7 +22,7 @@ namespace DDE {
  * it's public member functions directly elsewhere.
  */
 class ShaderStore {
- private:
+private:
   // The currently active shader stage
   DDE::ShaderStage _currentActiveStage = DDE::ShaderStage::NONE;
   // Used to map ShaderStage enums to OpenGL Shader objects
@@ -30,7 +30,7 @@ class ShaderStore {
 
   void _cacheShaderPipeline(DDE::ShaderStage stage);
 
- public:
+public:
   ShaderStore() = default;
   ~ShaderStore() = default;
 
@@ -38,4 +38,4 @@ class ShaderStore {
   DDE::ShaderStage getActiveShaderStage() const;
 };
 
-}  // namespace DDE
+} // namespace DDE

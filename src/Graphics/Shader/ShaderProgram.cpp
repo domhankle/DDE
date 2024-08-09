@@ -1,4 +1,4 @@
-#include <DDE/Shader/ShaderProgram.hpp>
+#include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <cstdlib>
 #include <exception>
 #include <iostream>

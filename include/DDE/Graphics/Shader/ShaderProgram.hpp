@@ -1,6 +1,6 @@
 #pragma once
 
-#include <DDE/Shader/Shader.hpp>
+#include <DDE/Graphics/Shader/Shader.hpp>
 #include <Glad/glad/glad.h>
 #include <initializer_list>
 #include <vector>
