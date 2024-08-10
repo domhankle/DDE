@@ -1,7 +1,7 @@
 #include <DDE/Graphics/Shape/Triangle.hpp>
 
 /**
- * Triangle constructor
+ * Triangle vertex constructor
  *
  * @param vertexOne The first vertex of the triangle
  * @param vertexTwo The second vertex of the triangle
@@ -17,7 +17,12 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
   glBindVertexArray(0);
 }
 
-// TODO: Documentation
+/**
+ * Triangle base/height constructor
+ *
+ * @param base The length of the base of the triangle
+ * @param height The height of the triangle
+ */
 DDE::Triangle::Triangle(float base, float height)
     : Shape({-base / 2, -height / 2, 0.0f, base / 2, -height / 2, 0.0f, 0.0f,
              height / 2, 0.0f}) {
