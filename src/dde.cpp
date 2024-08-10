@@ -12,7 +12,6 @@
 
 void drawFunction(DDE::Pencil &pencil, DDE::Quad &square,
                   DDE::Triangle &triange) {
-  pencil.draw(square);
   pencil.draw(triange);
 }
 
@@ -23,8 +22,7 @@ int main() {
   DDE::Vertex v1{0.0f, 0.5f}, v3{0.5f, 0.0f}, v4{-0.5f, 0.0f}, v2{0.0f, -0.5f};
   DDE::Quad square{v1, v2, v3, v4};
 
-  DDE::Vertex v5{-1.0f, 1.0f}, v6{0.0f, 1.0f}, v7{-0.5, 0.5};
-  DDE::Triangle triangle{v5, v6, v7};
+  DDE::Triangle triangle{2.0f, 2.0f};
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge

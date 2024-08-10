@@ -17,6 +17,15 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
   glBindVertexArray(0);
 }
 
+// TODO: Documentation
+DDE::Triangle::Triangle(float base, float height)
+    : Shape({-base / 2, -height / 2, 0.0f, base / 2, -height / 2, 0.0f, 0.0f,
+             height / 2, 0.0f}) {
+  this->_setUpVertexData(this->_vertices);
+
+  glBindVertexArray(0);
+}
+
 /**
  * This function is used to actually render
  * the triangle object to the screen.
