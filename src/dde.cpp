@@ -10,8 +10,7 @@
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
 
-void drawFunction(DDE::Pencil &pencil, DDE::Quad &square,
-                  DDE::Triangle &triange) {
+void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triange) {
   pencil.draw(triange);
 }
 
@@ -19,15 +18,11 @@ int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Vertex v1{0.0f, 0.5f}, v3{0.5f, 0.0f}, v4{-0.5f, 0.0f}, v2{0.0f, -0.5f};
-  DDE::Quad square{v1, v2, v3, v4};
-
   DDE::Triangle triangle{2.0f, 2.0f};
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(pencil), std::ref(square),
-               std::ref(triangle));
+  engine.start(drawFunction, std::ref(pencil), std::ref(triangle));
 
   return 0;
 }
