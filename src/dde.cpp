@@ -1,6 +1,3 @@
-#include "DDE/Graphics/Shape/Quad.hpp"
-#include <Glad/glad/glad.h>
-
 #include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Pencil.hpp>
@@ -9,6 +6,7 @@
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <DDE/Shader/Shader.hpp>
 #include <DDE/Shader/ShaderProgram.hpp>
+#include <Glad/glad/glad.h>
 
 void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triange) {
   pencil.draw(triange);
