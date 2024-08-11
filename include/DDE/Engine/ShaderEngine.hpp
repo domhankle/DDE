@@ -1,8 +1,8 @@
 #pragma once
 
-#include <DDE/Shader/Shader.hpp>
-#include <DDE/Shader/ShaderProgram.hpp>
-#include <DDE/Shader/ShaderStore.hpp>
+#include <DDE/Graphics/Shader/Shader.hpp>
+#include <DDE/Graphics/Shader/ShaderProgram.hpp>
+#include <DDE/Graphics/Shader/ShaderStore.hpp>
 
 namespace DDE {
 
@@ -15,7 +15,7 @@ namespace DDE {
  * etc.
  */
 class ShaderEngine {
- public:
+public:
   // The static single shader store to be used in the lifetime of a DDE app.
   static DDE::ShaderStore shaderStore;
 
@@ -23,4 +23,4 @@ class ShaderEngine {
   ShaderEngine() = delete;
 };
 
-}  // namespace DDE
+} // namespace DDE

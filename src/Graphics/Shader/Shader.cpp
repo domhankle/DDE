@@ -1,6 +1,6 @@
 #include <Glad/glad/glad.h>
 
-#include <DDE/Shader/Shader.hpp>
+#include <DDE/Graphics/Shader/Shader.hpp>
 #include <cstdlib>
 #include <exception>
 #include <fstream>
