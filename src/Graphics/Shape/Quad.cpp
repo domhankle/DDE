@@ -27,6 +27,27 @@ DDE::Quad::Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
 }
 
 /**
+ * Constructor for a Square shape based on width/height. The
+ * origin of this shape will be located in the center of the
+ * screen.
+ *
+ * @param width The horizontal width of the shape
+ * @param height The vertical height of the shape
+ */
+DDE::Quad::Quad(float width, float height)
+    : Shape(), _indices{0, 1, 2, 1, 2, 3} {
+
+  this->_vertices = this->_reorganizeVertices(
+      {DDE::Vertex(-width / 2, -height / 2),
+       DDE::Vertex(width / 2, -height / 2), DDE::Vertex(width / 2, height / 2),
+       DDE::Vertex(-width / 2, height / 2)});
+
+  this->_setUpVertexData(this->_vertices);
+
+  glBindVertexArray(0);
+}
+
+/**
  * This is the required render function that describes
  * how a Square object will be drawn to the screen.
  */
