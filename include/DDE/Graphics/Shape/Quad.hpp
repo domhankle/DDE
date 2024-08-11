@@ -27,6 +27,7 @@ private:
 public:
   Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo, DDE::Vertex &vertexThree,
        DDE::Vertex &vertexFour);
+  Quad(float width, float height);
   Quad() = delete;
   ~Quad() = default;
 
