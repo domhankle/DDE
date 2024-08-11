@@ -16,11 +16,12 @@ int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Triangle triangle{2.0f, 2.0f};
+  DDE::Quad square{2.0, 2.0};
+
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(pencil), std::ref(triangle));
+  engine.start(drawFunction, std::ref(pencil), std::ref(square));
 
   return 0;
 }
