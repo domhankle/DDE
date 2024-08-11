@@ -22,6 +22,7 @@ private:
 public:
   Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
            DDE::Vertex &vertexThree);
+  Triangle(float base, float height);
   Triangle() = delete;
   ~Triangle() = default;
 
