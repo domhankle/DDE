@@ -20,7 +20,7 @@ private:
   std::vector<float> _transformToOpenGLData() override;
 
 public:
-  VertexBuffer() = delete;
+  VertexBuffer() = default;
   VertexBuffer(std::vector<DDE::Vertex> positions,
                DDE::Vertex color = DDE::Vertex{1.0f, 1.0f, 1.0f, 1.0f});
   void unBind() override;

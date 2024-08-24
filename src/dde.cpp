@@ -10,20 +10,20 @@
 #include <DDE/Graphics/Sprite.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 
-void drawFunction(DDE::Pencil &pencil, DDE::Quad &square) {
-  pencil.draw(square);
+void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
+  pencil.draw(triangle);
 }
 
 int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Quad square{2.0, 2.0};
+  DDE::Triangle triangle{2.0, 2.0};
 
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(pencil), std::ref(square));
+  engine.start(drawFunction, std::ref(pencil), std::ref(triangle));
 
   return 0;
 }

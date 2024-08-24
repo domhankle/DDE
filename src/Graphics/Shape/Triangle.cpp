@@ -1,4 +1,7 @@
+#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Shape/Triangle.hpp>
+#include <iostream>
+#include <ostream>
 
 /**
  * Triangle vertex constructor
@@ -26,8 +29,12 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
 DDE::Triangle::Triangle(float base, float height)
     : Shape({-base / 2, -height / 2, 0.0f, base / 2, -height / 2, 0.0f, 0.0f,
              height / 2, 0.0f}) {
-  this->_setUpVertexData(this->_vertices);
-
+  std::vector<DDE::Vertex> positions;
+  positions.push_back(DDE::Vertex{-base / 2, -height / 2});
+  positions.push_back(DDE::Vertex{base / 2, -height / 2});
+  positions.push_back(DDE::Vertex{0.0f, height / 2});
+  this->_vertexBuffer =
+      VertexBuffer{positions, DDE::Vertex{1.0f, 0.0f, 0.0f, 1.0f}};
   glBindVertexArray(0);
 }
 
@@ -36,6 +43,8 @@ DDE::Triangle::Triangle(float base, float height)
  * the triangle object to the screen.
  */
 void DDE::Triangle::render() {
+  // std::cout << "Called Render!" << std::endl;
+  // exit(EXIT_FAILURE);
   glBindVertexArray(this->_vertexArrayObject);
   glDrawArrays(GL_TRIANGLES, 0, 3);
 }
