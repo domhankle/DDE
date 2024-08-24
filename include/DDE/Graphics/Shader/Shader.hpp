@@ -31,6 +31,8 @@ private:
   bool _shaderCompiledSuccessfully(unsigned int shaderObject) const;
 
 public:
+  void setUniformVec4(std::string uniformName, float *newVec4) const;
+
   unsigned int getType() const;
 
   unsigned int getShaderObject() const;

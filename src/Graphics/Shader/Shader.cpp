@@ -10,6 +10,13 @@
 #include <stdexcept>
 #include <string>
 
+// TODO: Documentation
+void DDE::Shader::setUniformVec4(std::string uniformName,
+                                 float *newVec4) const {
+  int location = glGetUniformLocation(this->_shaderObject, uniformName.c_str());
+  glUniform4fv(location, 4, newVec4);
+}
+
 /**
  * Getter for the shader source code
  *
