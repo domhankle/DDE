@@ -23,7 +23,8 @@ protected:
 
   void _initializeGLObjects();
   virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
-  Shape(std::initializer_list<float> vertices);
+  Shape(std::initializer_list<float> vertices,
+        DDE::Vertex color = DDE::Vertex{1.0f, 1.0f, 1.0f, 1.0f});
   Shape();
 
 public:

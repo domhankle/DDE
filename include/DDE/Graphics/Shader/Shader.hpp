@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <string>
 
 namespace DDE {
@@ -12,7 +13,7 @@ namespace DDE {
  * in the constructor.
  */
 class Shader {
- private:
+private:
   // Source code for this shader
   std::string _sourceCode;
 
@@ -29,7 +30,7 @@ class Shader {
   void _compileShaderObject(const char *sourceCode, unsigned int type);
   bool _shaderCompiledSuccessfully(unsigned int shaderObject) const;
 
- public:
+public:
   unsigned int getType() const;
 
   unsigned int getShaderObject() const;
@@ -49,4 +50,4 @@ class Shader {
   void compileShader(std::string &filePath);
 };
 
-}  // namespace DDE
+} // namespace DDE

@@ -1,8 +1,10 @@
 #version 330
 
-out vec4 color;
+
+uniform uvec4 colorValue = uvec4(1.0f, 1.0f, 1.0f, 1.0f);
+out uvec4 color;
 
 void main() {
-  color = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+  color = colorValue;
 }
 

@@ -1,3 +1,4 @@
+#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Shape/Shape.hpp>
 #include <Glad/glad/glad.h>
 
@@ -26,7 +27,7 @@ DDE::Shape::Shape()
  *
  * @param vertices The vertex data
  */
-DDE::Shape::Shape(std::initializer_list<float> vertices)
+DDE::Shape::Shape(std::initializer_list<float> vertices, DDE::Vertex color)
     : _vertices{vertices}, DDE::Drawable(DDE::ShaderStage::PRIMITIVE) {
   this->_initializeGLObjects();
 }
