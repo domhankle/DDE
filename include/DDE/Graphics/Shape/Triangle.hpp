@@ -15,19 +15,20 @@ namespace DDE {
 class Triangle : public DDE::Shape {
 
 private:
-  void _setUpVertexData(std::vector<float> &vertices);
-  VertexBuffer _vertexBuffer;
+  // TODO: Documentation
+  DDE::VertexBuffer _vertexBuffer;
+  // TODO: Documentation
+  float _height;
+  // TODO: Documentation
+  float _base;
 
-  // The OpenGL VBO object associated with this shape
-  unsigned int _vertexBufferObject;
+  void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
-           DDE::Vertex &vertexThree);
   Triangle(float base, float height);
   Triangle() = delete;
   ~Triangle() = default;
 
-  void render();
+  void render() override;
 };
 } // namespace DDE

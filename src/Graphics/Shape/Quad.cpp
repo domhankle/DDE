@@ -4,29 +4,6 @@
 #include <algorithm>
 
 /**
- * Constructor for a Square shape. It handles constructing
- * the vertex data including the buffer objects and Vertex
- * Array object.
- *
- * @param vertexOne First corner of the quad
- * @param vertexTwo Second corner of the quad
- * @param vertexThree Third corner of the quad
- * @param vertexFour Fourth corner of the quad
- */
-DDE::Quad::Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
-                DDE::Vertex &vertexThree, DDE::Vertex &vertexFour)
-    : Shape(), _indices{0, 1, 2, 1, 2, 3} {
-
-  // We initialize the vertices at the Quad class rather than Shape class.
-  this->_vertices = this->_reorganizeVertices(
-      {vertexOne, vertexTwo, vertexThree, vertexFour});
-
-  this->_setUpVertexData(this->_vertices);
-
-  glBindVertexArray(0);
-}
-
-/**
  * Constructor for a Square shape based on width/height. The
  * origin of this shape will be located in the center of the
  * screen.

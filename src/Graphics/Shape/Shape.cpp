@@ -19,14 +19,3 @@ DDE::Shape::Shape()
     : _vertices{{}}, DDE::Drawable(DDE::ShaderStage::PRIMITIVE) {
   this->_initializeGLObjects();
 }
-
-/**
- * The constructor for a Shape object only accepts
- * vertex data.
- *
- * @param vertices The vertex data
- */
-DDE::Shape::Shape(std::initializer_list<float> vertices)
-    : _vertices{vertices}, DDE::Drawable(DDE::ShaderStage::PRIMITIVE) {
-  this->_initializeGLObjects();
-}

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
@@ -22,8 +23,7 @@ protected:
   unsigned int _vertexArrayObject;
 
   void _initializeGLObjects();
-  virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
-  Shape(std::initializer_list<float> vertices);
+  virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
   Shape();
 
 public:
