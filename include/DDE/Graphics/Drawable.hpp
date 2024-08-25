@@ -1,4 +1,5 @@
 #pragma once
+#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
 #include <vector>
@@ -19,7 +20,7 @@ protected:
   DDE::ShaderStage _shaderPipelineID;
 
   virtual void _initializeGLObjects() = 0;
-  virtual void _setUpVertexData(std::vector<float> &vertices) = 0;
+  virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
 
   Drawable() = delete;
   Drawable(DDE::ShaderStage shaderPipeline);

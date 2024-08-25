@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
 #include <DDE/Graphics/Shape/Shape.hpp>
 
 namespace DDE {
@@ -13,25 +14,21 @@ namespace DDE {
 class Quad : public DDE::Shape {
 
 private:
-  // Utilized in the EBO for drawing the Square
-  std::vector<unsigned int> _indices;
-  // The OpenGL element buffer object
-  unsigned int _elementBufferObject;
   // The OpenGL vertex buffer object
-  unsigned int _vertexBufferObject;
+  DDE::VertexBuffer _vertexBuffer;
+  // TODO: Documentation
+  float _width;
+  // TODO: Documentation
+  float _height;
 
-  void _setUpVertexData(std::vector<float> &vertices);
-  void _setUpElementsBuffer(std::vector<unsigned int> &indices);
-  std::vector<float> _reorganizeVertices(std::vector<DDE::Vertex> &&vertices);
+  void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Quad(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo, DDE::Vertex &vertexThree,
-       DDE::Vertex &vertexFour);
   Quad(float width, float height);
   Quad() = delete;
   ~Quad() = default;
 
-  void render();
+  void render() override;
 };
 
 } // namespace DDE

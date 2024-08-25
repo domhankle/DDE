@@ -20,7 +20,7 @@ void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
   positions.push_back(DDE::Vertex{this->_base / 2, -this->_height / 2});
   positions.push_back(DDE::Vertex{0.0f, this->_height / 2});
 
-  this->_vertexBuffer = VertexBuffer{positions};
+  vbo = DDE::VertexBuffer{positions};
   glBindVertexArray(0);
 }
 
