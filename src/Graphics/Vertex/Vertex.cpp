@@ -13,9 +13,8 @@ DDE::Vertex::Vertex(DDE::Vec4 position, DDE::Vec4 color,
 std::string DDE::Vertex::print() const {
   std::stringstream ss;
 
-  ss << "Position: " << this->position << std::endl
-     << "Color: " << this->color << std::endl
-     << "Texture Coordinates: " << this->textureCoordinates << std::endl;
+  ss << "Position: " << this->position << "Color: " << this->color
+     << "Texture Coordinates: " << this->textureCoordinates;
 
   return ss.str();
 }

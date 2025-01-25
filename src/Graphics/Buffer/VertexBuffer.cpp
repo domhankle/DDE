@@ -1,13 +1,16 @@
-#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
+#include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <DDE/Utility/BufferTypes.hpp>
 #include <Glad/glad/glad.h>
+#include <iostream>
 #include <sstream>
 #include <vector>
 
 // TODO: Documentation
 DDE::VertexBuffer::VertexBuffer(std::vector<DDE::Vertex> vertices)
-    : Buffer(), _vertices{vertices} {}
+    : Buffer(), _vertices{vertices} {
+  this->_configureBufferObject();
+}
 
 // TODO: Documentation
 void DDE::VertexBuffer::bind() {
