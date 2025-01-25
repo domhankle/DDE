@@ -13,7 +13,7 @@
  * @param width The width of the sprite
  * @param height The height of the sprite
  */
-DDE::Sprite::Sprite(DDE::Vertex position, DDE::Texture2D &texture)
+DDE::Sprite::Sprite(DDE::Vec4 position, DDE::Texture2D &texture)
     : _position{position.x, position.y, position.z, position.w},
       _texture{texture} {
 
@@ -51,7 +51,7 @@ void DDE::Sprite::_initializeGLObjects() {
  * @param width The width of this sprite
  * @param height The height of this sprite
  */
-void DDE::Sprite::_setUpVertexData(DDE::Vertex &origin, float width,
+void DDE::Sprite::_setUpVertexData(DDE::Vec4 &origin, float width,
                                    float height) {
   this->_vertices = {origin.x,         origin.y,          0.0f, 1.0f,
                      origin.x + width, origin.y,          1.0f, 1.0f,
@@ -102,4 +102,4 @@ unsigned int DDE::Sprite::getSpriteObject() const {
  *
  * @returns DDE::Vertex
  */
-DDE::Vertex DDE::Sprite::getPosition() const { return this->_position; }
+DDE::Vec4 DDE::Sprite::getPosition() const { return this->_position; }

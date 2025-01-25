@@ -11,18 +11,18 @@ class VertexBuffer : public Buffer {
 
 private:
   // TODO: Documentation
-  std::vector<DDE::Vertex> _positionVertices;
+  std::vector<DDE::Vec4> _positionVertices;
   // TODO: Documentation
-  DDE::Vertex _color;
+  DDE::Vec4 _color;
 
   void _configureBufferObject() override;
   void _configureVertexAttributes() override;
-  std::vector<float> _transformToOpenGLData() override;
+  std::vector<float> _getOpenGLData() override;
 
 public:
   VertexBuffer() = default;
-  VertexBuffer(std::vector<DDE::Vertex> positions,
-               DDE::Vertex color = DDE::Vertex{1.0f, 1.0f, 1.0f, 1.0f});
+  VertexBuffer(std::vector<DDE::Vec4> positions,
+               DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
   void unBind() override;
   void bind() override;
 };

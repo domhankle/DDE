@@ -4,8 +4,8 @@
 #include <vector>
 
 // TODO: Documentation
-DDE::VertexBuffer::VertexBuffer(std::vector<DDE::Vertex> positions,
-                                DDE::Vertex color)
+DDE::VertexBuffer::VertexBuffer(std::vector<DDE::Vec4> positions,
+                                DDE::Vec4 color)
     : Buffer(), _positionVertices{positions}, _color{color} {
   this->_configureBufferObject();
 }
@@ -20,7 +20,7 @@ void DDE::VertexBuffer::unBind() { glBindBuffer(GL_ARRAY_BUFFER, 0); }
 
 // TODO: Documentation
 void DDE::VertexBuffer::_configureBufferObject() {
-  std::vector<float> vertexData = this->_transformToOpenGLData();
+  std::vector<float> vertexData = this->_getOpenGLData();
   this->bind();
   glBufferData(GL_ARRAY_BUFFER, vertexData.size() * sizeof(float),
                vertexData.data(), GL_STATIC_DRAW);
@@ -28,10 +28,10 @@ void DDE::VertexBuffer::_configureBufferObject() {
 }
 
 // TODO: Documentation
-std::vector<float> DDE::VertexBuffer::_transformToOpenGLData() {
+std::vector<float> DDE::VertexBuffer::_getOpenGLData() {
 
   std::vector<float> toReturn;
-  for (const DDE::Vertex &vertex : this->_positionVertices) {
+  for (const DDE::Vec4 &vertex : this->_positionVertices) {
     toReturn.push_back(vertex.x);
     toReturn.push_back(vertex.y);
     toReturn.push_back(vertex.z);

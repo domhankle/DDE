@@ -19,13 +19,13 @@ DDE::Quad::Quad(float width, float height) : _width(width), _height(height) {
 // TODO: Documentation
 void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
 
-  std::vector<DDE::Vertex> positions;
-  positions.push_back(DDE::Vertex{-this->_width / 2, -this->_height / 2});
-  positions.push_back(DDE::Vertex{this->_width / 2, -this->_height / 2});
-  positions.push_back(DDE::Vertex{this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vertex{this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vertex{-this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vertex{-this->_width / 2, -this->_height / 2});
+  std::vector<DDE::Vec4> positions;
+  positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{this->_width / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
+  positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
+  positions.push_back(DDE::Vec4{-this->_width / 2, this->_height / 2});
+  positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
   vbo = DDE::VertexBuffer{positions};
   glBindVertexArray(0);
 }

@@ -15,10 +15,10 @@ DDE::Triangle::Triangle(float base, float height)
 
 // TODO: Documentation
 void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
-  std::vector<DDE::Vertex> positions;
-  positions.push_back(DDE::Vertex{-this->_base / 2, -this->_height / 2});
-  positions.push_back(DDE::Vertex{this->_base / 2, -this->_height / 2});
-  positions.push_back(DDE::Vertex{0.0f, this->_height / 2});
+  std::vector<DDE::Vec4> positions;
+  positions.push_back(DDE::Vec4{-this->_base / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{this->_base / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{0.0f, this->_height / 2});
 
   vbo = DDE::VertexBuffer{positions};
   glBindVertexArray(0);

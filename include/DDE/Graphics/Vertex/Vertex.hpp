@@ -9,7 +9,7 @@ namespace DDE {
  * RGBA value, texture coordinates, etc. It essentially
  * can be used to represent any 1-4 component variable.
  */
-struct Vertex {
+struct Vec4 {
   // X value
   float x;
 
@@ -22,8 +22,18 @@ struct Vertex {
   // W value
   float w;
 
-  Vertex(float x = 0.0, float y = 0.0, float z = 0.0, float w = 1.0);
-  bool operator==(DDE::Vertex &);
+  Vec4(float x = 0.0, float y = 0.0, float z = 0.0, float w = 1.0);
+  bool operator==(DDE::Vec4 &);
+};
+
+// TODO: Documentation
+struct Vertex {
+  DDE::Vec4 position;
+  DDE::Vec4 color;
+  DDE::Vec4 textureCoordinates;
+
+  Vertex(DDE::Vec4 position = DDE::Vec4(), DDE::Vec4 color = DDE::Vec4(),
+         DDE::Vec4 textureCoordinates = DDE::Vec4());
 };
 
 } // namespace DDE

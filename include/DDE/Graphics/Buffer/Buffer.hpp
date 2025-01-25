@@ -11,7 +11,7 @@ protected:
   unsigned int _bufferObject;
 
 private:
-  virtual std::vector<float> _transformToOpenGLData() = 0;
+  virtual std::vector<float> _getOpenGLData() = 0;
   virtual void _configureBufferObject() = 0;
   virtual void _configureVertexAttributes() = 0;
 
