@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>

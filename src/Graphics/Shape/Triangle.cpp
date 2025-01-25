@@ -1,4 +1,4 @@
-#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Triangle.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 
@@ -15,12 +15,18 @@ DDE::Triangle::Triangle(float base, float height)
 
 // TODO: Documentation
 void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
+  std::vector<DDE::Vertex> vertices;
+
   std::vector<DDE::Vec4> positions;
   positions.push_back(DDE::Vec4{-this->_base / 2, -this->_height / 2});
   positions.push_back(DDE::Vec4{this->_base / 2, -this->_height / 2});
   positions.push_back(DDE::Vec4{0.0f, this->_height / 2});
 
-  vbo = DDE::VertexBuffer{positions};
+  for (DDE::Vec4 &position : positions) {
+    vertices.push_back(DDE::Vertex{position});
+  }
+
+  vbo = DDE::VertexBuffer{vertices};
   glBindVertexArray(0);
 }
 

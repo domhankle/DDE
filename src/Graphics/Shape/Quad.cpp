@@ -2,6 +2,8 @@
 #include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
+#include <iostream>
+#include <vector>
 
 /**
  * Constructor for a Square shape based on width/height. The
@@ -18,6 +20,7 @@ DDE::Quad::Quad(float width, float height) : _width(width), _height(height) {
 
 // TODO: Documentation
 void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
+  std::vector<DDE::Vertex> vertices;
 
   std::vector<DDE::Vec4> positions;
   positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
@@ -26,7 +29,14 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
   positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
   positions.push_back(DDE::Vec4{-this->_width / 2, this->_height / 2});
   positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
-  vbo = DDE::VertexBuffer{positions};
+
+  for (DDE::Vec4 &position : positions) {
+    vertices.push_back(position);
+  }
+
+  vbo = DDE::VertexBuffer{vertices};
+  std::cout << vbo << std::endl;
+
   glBindVertexArray(0);
 }
 

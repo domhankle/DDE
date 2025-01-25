@@ -1,14 +1,13 @@
+#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Utility/BufferTypes.hpp>
 #include <Glad/glad/glad.h>
+#include <sstream>
 #include <vector>
 
 // TODO: Documentation
-DDE::VertexBuffer::VertexBuffer(std::vector<DDE::Vec4> positions,
-                                DDE::Vec4 color)
-    : Buffer(), _positionVertices{positions}, _color{color} {
-  this->_configureBufferObject();
-}
+DDE::VertexBuffer::VertexBuffer(std::vector<DDE::Vertex> vertices)
+    : Buffer(), _vertices{vertices} {}
 
 // TODO: Documentation
 void DDE::VertexBuffer::bind() {
@@ -31,15 +30,16 @@ void DDE::VertexBuffer::_configureBufferObject() {
 std::vector<float> DDE::VertexBuffer::_getOpenGLData() {
 
   std::vector<float> toReturn;
-  for (const DDE::Vec4 &vertex : this->_positionVertices) {
-    toReturn.push_back(vertex.x);
-    toReturn.push_back(vertex.y);
-    toReturn.push_back(vertex.z);
-    toReturn.push_back(vertex.w);
-    toReturn.push_back(this->_color.x);
-    toReturn.push_back(this->_color.y);
-    toReturn.push_back(this->_color.z);
-    toReturn.push_back(this->_color.w);
+
+  for (const DDE::Vertex &vertex : this->_vertices) {
+    toReturn.push_back(vertex.position.x);
+    toReturn.push_back(vertex.position.y);
+    toReturn.push_back(vertex.position.z);
+    toReturn.push_back(vertex.position.w);
+    toReturn.push_back(vertex.color.x);
+    toReturn.push_back(vertex.color.y);
+    toReturn.push_back(vertex.color.z);
+    toReturn.push_back(vertex.color.w);
   }
 
   return toReturn;
@@ -53,4 +53,15 @@ void DDE::VertexBuffer::_configureVertexAttributes() {
   glEnableVertexAttribArray(LayoutLocation::COLOR);
   glVertexAttribPointer(LayoutLocation::COLOR, 4, GL_FLOAT, GL_FALSE,
                         8 * sizeof(float), (void *)(4 * sizeof(float)));
+}
+
+// TODO: Documentation
+std::string DDE::VertexBuffer::print() const {
+  std::stringstream ss;
+
+  for (const DDE::Vertex &vertex : this->_vertices) {
+    ss << vertex << std::endl;
+  }
+
+  return ss.str();
 }

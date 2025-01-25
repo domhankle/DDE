@@ -1,7 +1,8 @@
 #pragma once
 
-#include "DDE/Graphics/Vertex/Vertex.hpp"
 #include <DDE/Graphics/Buffer/Buffer.hpp>
+#include <DDE/Graphics/Vertex/Vertex.hpp>
+#include <ostream>
 #include <vector>
 
 namespace DDE {
@@ -11,9 +12,7 @@ class VertexBuffer : public Buffer {
 
 private:
   // TODO: Documentation
-  std::vector<DDE::Vec4> _positionVertices;
-  // TODO: Documentation
-  DDE::Vec4 _color;
+  std::vector<DDE::Vertex> _vertices;
 
   void _configureBufferObject() override;
   void _configureVertexAttributes() override;
@@ -21,10 +20,18 @@ private:
 
 public:
   VertexBuffer() = default;
-  VertexBuffer(std::vector<DDE::Vec4> positions,
-               DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
+  VertexBuffer(std::vector<DDE::Vertex> vertices);
   void unBind() override;
   void bind() override;
+
+  std::string print() const;
 };
+
+// TODO: Documentation
+inline std::ostream &operator<<(std::ostream &os,
+                                const VertexBuffer &vertexBuffer) {
+  os << vertexBuffer.print();
+  return os;
+}
 
 } // namespace DDE

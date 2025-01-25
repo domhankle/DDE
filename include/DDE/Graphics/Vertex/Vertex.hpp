@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 namespace DDE {
 
 /**
@@ -24,7 +25,16 @@ struct Vec4 {
 
   Vec4(float x = 0.0, float y = 0.0, float z = 0.0, float w = 1.0);
   bool operator==(DDE::Vec4 &);
+  std::string print() const;
+
+  friend std::ostream &operator<<(std::ostream &os, const Vec4 &vector);
 };
+
+// TODO: Documentation
+inline std::ostream &operator<<(std::ostream &os, const DDE::Vec4 &vector) {
+  os << vector.print();
+  return os;
+}
 
 // TODO: Documentation
 struct Vertex {
@@ -32,8 +42,18 @@ struct Vertex {
   DDE::Vec4 color;
   DDE::Vec4 textureCoordinates;
 
-  Vertex(DDE::Vec4 position = DDE::Vec4(), DDE::Vec4 color = DDE::Vec4(),
+  Vertex(DDE::Vec4 position = DDE::Vec4(),
+         DDE::Vec4 color = DDE::Vec4(1.0f, 1.0f, 1.0f),
          DDE::Vec4 textureCoordinates = DDE::Vec4());
+  std::string print() const;
+
+  friend std::ostream &operator<<(std::ostream &os, const Vertex &vertex);
 };
+
+// TODO: Documentation
+inline std::ostream &operator<<(std::ostream &os, const DDE::Vertex &vertex) {
+  os << vertex.print();
+  return os;
+}
 
 } // namespace DDE
