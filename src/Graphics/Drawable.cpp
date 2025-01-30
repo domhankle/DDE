@@ -7,7 +7,10 @@
 DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline)
     : _shaderPipelineID(shaderPipeline) {}
 
-// TODO: Documentation
+/**
+ * This is our function to get the shader pipeline ID from
+ * a drawable object in DDE.
+ */
 DDE::ShaderStage DDE::Drawable::getShaderPipeline() const {
   return this->_shaderPipelineID;
 }

@@ -1,42 +1,17 @@
 #pragma once
 
+#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <ostream>
+
 namespace DDE {
 
 /**
  * @struct Vertex
  *
- * This struct is used to represent a point in space,
- * RGBA value, texture coordinates, etc. It essentially
- * can be used to represent any 1-4 component variable.
+ * This is utilized to represent a single vertex
+ * in the context of OpenGL. A vertex could hold
+ * position, color, and texture coordinates.
  */
-struct Vec4 {
-  // X value
-  float x;
-
-  // Y value
-  float y;
-
-  // Z value
-  float z;
-
-  // W value
-  float w;
-
-  Vec4(float x = 0.0, float y = 0.0, float z = 0.0, float w = 1.0);
-  bool operator==(DDE::Vec4 &);
-  std::string print() const;
-
-  friend std::ostream &operator<<(std::ostream &os, const Vec4 &vector);
-};
-
-// TODO: Documentation
-inline std::ostream &operator<<(std::ostream &os, const DDE::Vec4 &vector) {
-  os << vector.print();
-  return os;
-}
-
-// TODO: Documentation
 struct Vertex {
   DDE::Vec4 position;
   DDE::Vec4 color;
@@ -50,7 +25,15 @@ struct Vertex {
   friend std::ostream &operator<<(std::ostream &os, const Vertex &vertex);
 };
 
-// TODO: Documentation
+/**
+ * This allows us to write Vertex objects to an output stream
+ * in a readable format.
+ *
+ * @param os The stream we are writing to.
+ * @param vertex The vertex object we are writing to the stream
+ *
+ * @returns An output stream that holds the vertex object
+ */
 inline std::ostream &operator<<(std::ostream &os, const DDE::Vertex &vertex) {
   os << vertex.print();
   return os;
