@@ -4,10 +4,8 @@
 /**
  * Constructor for Vertex object
  */
-DDE::Vertex::Vertex(DDE::Vec4 position, DDE::Vec4 color,
-                    DDE::Vec4 textureCoordinates)
-    : position(position), color(color), textureCoordinates(textureCoordinates) {
-}
+DDE::Vertex::Vertex(DDE::Vec4 position, DDE::Vec4 color, DDE::Vec4 texture)
+    : position(position), color(color), texture(texture) {}
 
 /**
  * This is utilized to print a Vertex object to the console.
@@ -18,7 +16,7 @@ std::string DDE::Vertex::print() const {
   std::stringstream ss;
 
   ss << "Position: " << this->position << "Color: " << this->color
-     << "Texture Coordinates: " << this->textureCoordinates;
+     << "Texture Coordinates: " << this->texture;
 
   return ss.str();
 }

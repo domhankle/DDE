@@ -62,14 +62,23 @@ std::vector<float> DDE::VertexBuffer::_getOpenGLData() {
   std::vector<float> toReturn;
 
   for (const DDE::Vertex &vertex : this->_vertices) {
+    // Position data
     toReturn.push_back(vertex.position.x);
     toReturn.push_back(vertex.position.y);
     toReturn.push_back(vertex.position.z);
     toReturn.push_back(vertex.position.w);
+
+    // Color data
     toReturn.push_back(vertex.color.x);
     toReturn.push_back(vertex.color.y);
     toReturn.push_back(vertex.color.z);
     toReturn.push_back(vertex.color.w);
+
+    // Texture data
+    toReturn.push_back(vertex.texture.x);
+    toReturn.push_back(vertex.texture.y);
+    toReturn.push_back(vertex.texture.z);
+    toReturn.push_back(vertex.texture.w);
   }
 
   return toReturn;
@@ -89,11 +98,11 @@ void DDE::VertexBuffer::_configureVertexAttributes() {
    * - 4 components
    * - floats
    * - Not normalized
-   * - The start of the next POSITION attribute is 8 floats away
+   * - The start of the next POSITION attribute is 12 floats away
    * - The POSITION attribute is at the start of the buffer
    */
   glVertexAttribPointer(LayoutLocation::POSITION, 4, GL_FLOAT, GL_FALSE,
-                        8 * sizeof(float), (void *)0);
+                        12 * sizeof(float), (void *)0);
 
   // Enable the DDE vertex attribute for COLOR (1)
   glEnableVertexAttribArray(LayoutLocation::COLOR);
@@ -103,11 +112,25 @@ void DDE::VertexBuffer::_configureVertexAttributes() {
    * - 4 components
    * - floats
    * - Not normalized
-   * - The start of the next COLOR attribute is 8 floats away
+   * - The start of the next COLOR attribute is 12 floats away
    * - The COLOR attribute is 4 floats away from the start of the buffer
    */
   glVertexAttribPointer(LayoutLocation::COLOR, 4, GL_FLOAT, GL_FALSE,
-                        8 * sizeof(float), (void *)(4 * sizeof(float)));
+                        12 * sizeof(float), (void *)(4 * sizeof(float)));
+
+  // Enable the DDE vertex attribute for TEXTURE (2)
+  glEnableVertexAttribArray(LayoutLocation::TEXTURE);
+
+  /**
+   * Describe the TEXTURE (2) attribute
+   * - 4 components
+   * - floats
+   * - Not normalized
+   * - The start of the next TEXTURE attribute is 12 floats away
+   * - The TEXTURE attribute is 8 floats away from the start of the buffer
+   */
+  glVertexAttribPointer(LayoutLocation::TEXTURE, 4, GL_FLOAT, GL_FALSE,
+                        12 * sizeof(float), (void *)(8 * sizeof(float)));
 }
 
 /**
