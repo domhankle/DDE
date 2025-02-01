@@ -7,11 +7,19 @@
 
 namespace DDE {
 
-// TODO: Documentation
+/**
+ * @class VertexBuffer
+ *
+ * This class abstracts the process of creating
+ * a vertex buffer in OpenGL. It handles creating
+ * the buffer object, populating it with specified
+ * vertices, and can be binded/unbinded to the OpenGL
+ * context.
+ */
 class VertexBuffer : public Buffer {
 
 private:
-  // TODO: Documentation
+  // The list of vertices to store in this buffer
   std::vector<DDE::Vertex> _vertices;
 
   void _configureBufferObject() override;
@@ -27,7 +35,15 @@ public:
   std::string print() const;
 };
 
-// TODO: Documentation
+/**
+ * This function allows us to write VertexBuffer objects
+ * to some stream in a human readable format.
+ *
+ * @param os The stream we are writing to.
+ * @param VertexBuffer The vertex buffer object we are writing.
+ *
+ * @returns The resulting stream with a vertex buffer object written to it.
+ */
 inline std::ostream &operator<<(std::ostream &os,
                                 const VertexBuffer &vertexBuffer) {
   os << vertexBuffer.print();
