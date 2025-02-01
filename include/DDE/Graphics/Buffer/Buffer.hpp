@@ -3,11 +3,17 @@
 #include <vector>
 namespace DDE {
 
-// TODO: Documentation
+/**
+ * @class Buffer
+ *
+ * This class is a base buffer class that
+ * the VertexBuffer object extends off of. It
+ * is utilized to generate buffer objects in OpenGL.
+ */
 class Buffer {
 
 protected:
-  // TODO: Documentation
+  // The underlying OpenGL buffer object
   unsigned int _bufferObject;
 
 private:

@@ -3,7 +3,6 @@
 #include <DDE/Utility/BufferTypes.hpp>
 #include <Glad/glad/glad.h>
 #include <iostream>
-
 #include <sstream>
 #include <vector>
 
