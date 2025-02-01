@@ -35,7 +35,6 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
   }
 
   vbo = DDE::VertexBuffer{vertices};
-  std::cout << vbo << std::endl;
 
   glBindVertexArray(0);
 }
