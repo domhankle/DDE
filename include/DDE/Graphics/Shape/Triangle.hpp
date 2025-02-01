@@ -15,11 +15,13 @@ namespace DDE {
 class Triangle : public DDE::Shape {
 
 private:
-  // TODO: Documentation
+  // The VertexBuffer object associated with this Triangle
   DDE::VertexBuffer _vertexBuffer;
-  // TODO: Documentation
+
+  // The height of the triangle
   float _height;
-  // TODO: Documentation
+
+  // The base length of the triangle
   float _base;
 
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;

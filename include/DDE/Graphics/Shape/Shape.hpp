@@ -17,8 +17,6 @@ namespace DDE {
 class Shape : public DDE::Drawable {
 
 protected:
-  // The vertices for the shape to draw
-  std::vector<float> _vertices;
   // The OpenGL VAO object associated with this shape
   unsigned int _vertexArrayObject;
 

@@ -15,7 +15,6 @@ void DDE::Shape::_initializeGLObjects() {
  * we want to handle constructing vertices in an
  * inheriting Shape class like Quad.
  */
-DDE::Shape::Shape()
-    : _vertices{{}}, DDE::Drawable(DDE::ShaderStage::PRIMITIVE) {
+DDE::Shape::Shape() : DDE::Drawable(DDE::ShaderStage::PRIMITIVE) {
   this->_initializeGLObjects();
 }
