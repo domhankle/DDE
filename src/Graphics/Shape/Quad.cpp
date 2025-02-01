@@ -2,7 +2,6 @@
 #include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
-#include <iostream>
 #include <vector>
 
 /**
@@ -18,11 +17,20 @@ DDE::Quad::Quad(float width, float height) : _width(width), _height(height) {
   this->_setUpVertexData(this->_vertexBuffer);
 }
 
-// TODO: Documentation
+/**
+ * This function is utilized to create the appropriate
+ * vertices and store them into the VertexBuffer object
+ * associated with this quad.
+ *
+ * @param vbo The vertex buffer object to populate
+ */
 void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
+  // Our list of Vertex objects we will need for the VBO
   std::vector<DDE::Vertex> vertices;
 
+  // A list of positions
   std::vector<DDE::Vec4> positions;
+  // Calculate positions based on width and height values of the quad
   positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
   positions.push_back(DDE::Vec4{this->_width / 2, -this->_height / 2});
   positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
@@ -34,8 +42,10 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
     vertices.push_back(position);
   }
 
+  // Initialize the quad VertexBuffer object
   vbo = DDE::VertexBuffer{vertices};
 
+  // Unbind this Quads VAO
   glBindVertexArray(0);
 }
 

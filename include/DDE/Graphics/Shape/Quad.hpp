@@ -16,9 +16,9 @@ class Quad : public DDE::Shape {
 private:
   // The OpenGL vertex buffer object
   DDE::VertexBuffer _vertexBuffer;
-  // TODO: Documentation
+  // The width of the quad
   float _width;
-  // TODO: Documentation
+  // The height of the quad
   float _height;
 
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;
