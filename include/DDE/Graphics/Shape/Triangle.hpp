@@ -1,4 +1,5 @@
 #pragma once
+#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Shape/Shape.hpp>
 
@@ -14,18 +15,22 @@ namespace DDE {
 class Triangle : public DDE::Shape {
 
 private:
-  void _setUpVertexData(std::vector<float> &vertices);
+  // The VertexBuffer object associated with this Triangle
+  DDE::VertexBuffer _vertexBuffer;
 
-  // The OpenGL VBO object associated with this shape
-  unsigned int _vertexBufferObject;
+  // The height of the triangle
+  float _height;
+
+  // The base length of the triangle
+  float _base;
+
+  void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
-           DDE::Vertex &vertexThree);
   Triangle(float base, float height);
   Triangle() = delete;
   ~Triangle() = default;
 
-  void render();
+  void render() override;
 };
 } // namespace DDE

@@ -2,6 +2,7 @@
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Vertex)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Shape)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Shader)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Buffer)
 
 set(GRAPHICS_SOURCES 
   ${CMAKE_CURRENT_SOURCE_DIR}/Sprite.cpp 
@@ -11,4 +12,5 @@ set(GRAPHICS_SOURCES
   ${VERTEX_SOURCES}
   ${SHAPE_SOURCES}
   ${SHADER_SOURCES}
+  ${BUFFER_SOURCES}
   PARENT_SCOPE)

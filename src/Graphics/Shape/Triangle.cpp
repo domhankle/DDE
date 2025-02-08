@@ -1,21 +1,6 @@
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Triangle.hpp>
-
-/**
- * Triangle vertex constructor
- *
- * @param vertexOne The first vertex of the triangle
- * @param vertexTwo The second vertex of the triangle
- * @param vertexThree The third vertex of the triangle
- */
-DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
-                        DDE::Vertex &vertexThree)
-    : Shape({vertexOne.x, vertexOne.y, vertexOne.z, vertexTwo.x, vertexTwo.y,
-             vertexTwo.z, vertexThree.x, vertexThree.y, vertexThree.z}) {
-
-  this->_setUpVertexData(this->_vertices);
-
-  glBindVertexArray(0);
-}
+#include <DDE/Graphics/Vertex/Vertex.hpp>
 
 /**
  * Triangle base/height constructor
@@ -24,10 +9,38 @@ DDE::Triangle::Triangle(DDE::Vertex &vertexOne, DDE::Vertex &vertexTwo,
  * @param height The height of the triangle
  */
 DDE::Triangle::Triangle(float base, float height)
-    : Shape({-base / 2, -height / 2, 0.0f, base / 2, -height / 2, 0.0f, 0.0f,
-             height / 2, 0.0f}) {
-  this->_setUpVertexData(this->_vertices);
+    : _base(base), _height(height) {
+  this->_setUpVertexData(this->_vertexBuffer);
+}
 
+/**
+ * This is a helper function to construct vertices
+ * that can be used by OpenGL from a triangles height
+ * and base.
+ *
+ * @param vbo This is the vertex buffer object we need to store the vertices in
+ */
+void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
+  // Create a vector to store our Vertex objects
+  std::vector<DDE::Vertex> vertices;
+
+  // Create a vector to store three Vec4 objects (x, y, z) for position
+  std::vector<DDE::Vec4> positions;
+
+  // Store the positions of the triangle based on the height and base values
+  positions.push_back(DDE::Vec4{-this->_base / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{this->_base / 2, -this->_height / 2});
+  positions.push_back(DDE::Vec4{0.0f, this->_height / 2});
+
+  // Create Vertex objects based on the Vec4 objects
+  for (DDE::Vec4 &position : positions) {
+    vertices.push_back(DDE::Vertex{position});
+  }
+
+  // Create our VertexBuffer object
+  vbo = DDE::VertexBuffer{vertices};
+
+  // Unbind the VAO associated with this triangle
   glBindVertexArray(0);
 }
 
@@ -38,24 +51,4 @@ DDE::Triangle::Triangle(float base, float height)
 void DDE::Triangle::render() {
   glBindVertexArray(this->_vertexArrayObject);
   glDrawArrays(GL_TRIANGLES, 0, 3);
-}
-
-/**
- * This function is used to configure our VBO
- * and specify the layout of our vertex data
- * for the Triangle object.
- *
- * @param vertices The set of vertices associated with
- *                 this Triangle object
- */
-void DDE::Triangle::_setUpVertexData(std::vector<float> &vertices) {
-  glGenBuffers(1, &this->_vertexBufferObject);
-  glBindBuffer(GL_ARRAY_BUFFER, this->_vertexBufferObject);
-
-  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float),
-               vertices.data(), GL_STATIC_DRAW);
-
-  glEnableVertexAttribArray(0);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 }

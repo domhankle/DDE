@@ -1,9 +1,11 @@
 #version 330
 
-uniform vec4 dde_u_color;
-out vec4 color;
+in vec4 vert_color;
+in vec4 vert_texture;
+
+out vec4 frag_color;
 
 void main() {
-  color = dde_u_color;
+  frag_color = vert_color;
 }
 
