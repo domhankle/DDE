@@ -1,12 +1,22 @@
 #include <DDE/Graphics/Vertex/Vertex.hpp>
+#include <sstream>
 
 /**
  * Constructor for Vertex object
  */
-DDE::Vertex::Vertex(float x, float y, float z, float w)
-    : x{x}, y{y}, z{z}, w{w} {}
+DDE::Vertex::Vertex(DDE::Vec4 position, DDE::Vec4 color, DDE::Vec4 texture)
+    : position(position), color(color), texture(texture) {}
 
-bool DDE::Vertex::operator==(DDE::Vertex &rhs) {
-  return this->x == rhs.x && this->y == rhs.y && this->z == rhs.z &&
-         this->w == rhs.w;
+/**
+ * This is utilized to print a Vertex object to the console.
+ *
+ * @returns A string that represents the Vertex object
+ */
+std::string DDE::Vertex::print() const {
+  std::stringstream ss;
+
+  ss << "Position: " << this->position << "Color: " << this->color
+     << "Texture Coordinates: " << this->texture;
+
+  return ss.str();
 }
