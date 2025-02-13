@@ -68,4 +68,8 @@ void DDE::RenderEngine::_configureWindow() {
   glfwMakeContextCurrent(this->_window);
   this->_initializeGLAD();
   glfwSwapInterval(1);
+
+  // TODO: Make this configurable
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }

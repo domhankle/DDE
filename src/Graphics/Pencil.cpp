@@ -10,5 +10,9 @@
  */
 void DDE::Pencil::draw(DDE::Drawable &drawableObject) const {
   DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
+
+  // TODO: Decide where we want to actually do this
+  glDepthMask(GL_FALSE);
   drawableObject.render();
+  glDepthMask(GL_TRUE);
 }
