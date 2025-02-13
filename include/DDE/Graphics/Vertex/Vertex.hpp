@@ -18,7 +18,7 @@ struct Vertex {
   DDE::Vec4 texture;
 
   Vertex(DDE::Vec4 position = DDE::Vec4(),
-         DDE::Vec4 color = DDE::Vec4(1.0f, 1.0f, 1.0f),
+         DDE::Vec4 color = DDE::Vec4(1.0f, 1.0f, 1.0f, 1.0f),
          DDE::Vec4 texture = DDE::Vec4());
   std::string print() const;
 

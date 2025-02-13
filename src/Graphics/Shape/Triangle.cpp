@@ -7,9 +7,11 @@
  *
  * @param base The length of the base of the triangle
  * @param height The height of the triangle
+ * @param color An optional RGBA color for the triangle. It defaults to solid
+ * white
  */
-DDE::Triangle::Triangle(float base, float height)
-    : _base(base), _height(height) {
+DDE::Triangle::Triangle(float base, float height, DDE::Vec4 color)
+    : DDE::Shape(color), _base(base), _height(height) {
   this->_setUpVertexData(this->_vertexBuffer);
 }
 
@@ -34,7 +36,7 @@ void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
 
   // Create Vertex objects based on the Vec4 objects
   for (DDE::Vec4 &position : positions) {
-    vertices.push_back(DDE::Vertex{position});
+    vertices.push_back(DDE::Vertex{position, this->_color});
   }
 
   // Create our VertexBuffer object

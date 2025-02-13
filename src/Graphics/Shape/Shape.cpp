@@ -15,6 +15,8 @@ void DDE::Shape::_initializeGLObjects() {
  * The default Shape constructor is utilized when
  * we want to handle constructing vertices in an
  * inheriting Shape class like Quad.
+ *
+ * @param color An optional color value for the Shape
  */
 DDE::Shape::Shape(DDE::Vec4 color)
     : DDE::Drawable(DDE::ShaderStage::PRIMITIVE, color) {

@@ -27,7 +27,8 @@ private:
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Triangle(float base, float height);
+  Triangle(float base, float height,
+           DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
   Triangle() = delete;
   ~Triangle() = default;
 

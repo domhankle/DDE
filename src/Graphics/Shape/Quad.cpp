@@ -1,3 +1,4 @@
+#include "DDE/Graphics/Vertex/Vec4.hpp"
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
@@ -11,8 +12,10 @@
  *
  * @param width The horizontal width of the shape
  * @param height The vertical height of the shape
+ * @param color An optional RGBA color for the quad. It defaults to solid white
  */
-DDE::Quad::Quad(float width, float height) : _width(width), _height(height) {
+DDE::Quad::Quad(float width, float height, DDE::Vec4 color)
+    : DDE::Shape(color), _width(width), _height(height) {
 
   this->_setUpVertexData(this->_vertexBuffer);
 }
@@ -39,7 +42,7 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
   positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
 
   for (DDE::Vec4 &position : positions) {
-    vertices.push_back(position);
+    vertices.push_back(DDE::Vertex{position, this->_color});
   }
 
   // Initialize the quad VertexBuffer object

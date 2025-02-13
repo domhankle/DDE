@@ -18,7 +18,7 @@ int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
 
-  DDE::Triangle triangle(2.0f, 2.0f);
+  DDE::Triangle triangle(2.0f, 2.0f, DDE::Vec4{0.3f, 0.8f, 1.0f, 0.1f});
   DDE::Pencil pencil;
 
   // Start the Rendering Enginge
