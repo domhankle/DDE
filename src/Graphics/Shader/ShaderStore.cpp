@@ -8,8 +8,8 @@
 /**
  * Handles retrieving the associated OpenGL Program object for a specified
  * ShaderStage. The OpenGL Program objects are lazily generated through this
- * function, if one is loaded yet we will call _cacheShaderPipeline to generate
- * it and then load it.
+ * function, if one isn't loaded yet we will call _cacheShaderPipeline to
+ * generate it and then load it.
  *
  * @param stage The specific ShaderStage we want to get the OpenGL Program
  * object for.

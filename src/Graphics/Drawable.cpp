@@ -4,8 +4,8 @@
  * The constructor is simply used to specify the shader pipeline
  * used by this drawable object.
  */
-DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline)
-    : _shaderPipelineID(shaderPipeline) {}
+DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline, DDE::Vec4 color)
+    : _shaderPipelineID(shaderPipeline), _color(color) {}
 
 /**
  * This is our function to get the shader pipeline ID from

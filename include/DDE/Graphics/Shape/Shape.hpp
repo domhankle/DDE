@@ -22,7 +22,7 @@ protected:
 
   void _initializeGLObjects();
   virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
-  Shape();
+  Shape(DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
 
 public:
   virtual void render() = 0;
