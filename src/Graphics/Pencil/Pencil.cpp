@@ -1,4 +1,4 @@
-#include <DDE/Graphics/Pencil/Pencil.hpp>
+#include <DDE/Graphics/Pencil.hpp>
 
 /**
  * This function is used to draw anything that inherits the
