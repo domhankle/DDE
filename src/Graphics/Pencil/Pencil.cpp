@@ -1,7 +1,7 @@
 #include <DDE/Graphics/Pencil/Pencil.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <cstdarg>
-#include <initializer_list>
+#include <memory>
 
 /**
  * This function is used to draw anything that inherits the
@@ -11,17 +11,18 @@
  *
  * @param drawableObject the object to draw to the screen.
  */
-void DDE::Pencil::draw(DDE::Drawable &drawableObject,
-                       std::initializer_list<DDE::DrawConfig *> configs) const {
+void DDE::Pencil::draw(
+    DDE::Drawable &drawableObject,
+    std::vector<std::unique_ptr<DDE::DrawConfig>> configs) const {
   DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
 
-  for (DDE::DrawConfig *config : configs) {
+  for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
     config->preDraw();
   }
 
   drawableObject.render();
 
-  for (DDE::DrawConfig *config : configs) {
+  for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
     config->postDraw();
   }
 }

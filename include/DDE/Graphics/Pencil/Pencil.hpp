@@ -2,7 +2,7 @@
 
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
-#include <initializer_list>
+#include <memory>
 
 namespace DDE {
 
@@ -16,7 +16,7 @@ class Pencil {
 private:
 public:
   void draw(DDE::Drawable &drawableObject,
-            std::initializer_list<DDE::DrawConfig *> = {}) const;
+            std::vector<std::unique_ptr<DDE::DrawConfig>> = {}) const;
 
   Pencil() = default;
   ~Pencil() = default;

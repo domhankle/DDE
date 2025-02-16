@@ -1,5 +1,9 @@
 #pragma once
 
+#include <DDE/Utility/DrawConfig/DrawConfigTypes.hpp>
+#include <memory>
+#include <vector>
+
 namespace DDE {
 
 /**
@@ -18,6 +22,9 @@ public:
   virtual void postDraw() const = 0;
 
   ~DrawConfig() = default;
-  DrawConfig() = delete;
+  DrawConfig() = default;
 };
+
+DDE::DrawConfigEntry GenerateDrawConfig(DDE::DrawConfigType type);
+
 } // namespace DDE

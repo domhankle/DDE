@@ -2,11 +2,14 @@
 namespace DDE {
 
 // TODO: Documentation
-class TransparencyDrawConfig : DrawConfig {
+class TransparencyDrawConfig : public DrawConfig {
 
 public:
   void preDraw() const override;
   void postDraw() const override;
+
+  TransparencyDrawConfig() = default;
+  ~TransparencyDrawConfig() = default;
 };
 
 } // namespace DDE
