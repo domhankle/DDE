@@ -11,13 +11,13 @@ namespace DDE {
  * 1. A pre-draw option that runs before rendering on the Pencil class
  * 2. A post-draw option that runs after rendering on the Pencil class
  */
-class DrawOption {
+class DrawConfig {
 
 public:
-  void preDraw() const;
-  void postDraw() const;
+  virtual void preDraw() const = 0;
+  virtual void postDraw() const = 0;
 
-  ~DrawOption() = default;
-  DrawOption() = delete;
+  ~DrawConfig() = default;
+  DrawConfig() = delete;
 };
 } // namespace DDE
