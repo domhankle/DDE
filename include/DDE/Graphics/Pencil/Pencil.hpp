@@ -16,7 +16,7 @@ class Pencil {
 private:
 public:
   void draw(DDE::Drawable &drawableObject,
-            std::vector<std::unique_ptr<DDE::DrawConfig>> = {}) const;
+            DDE::DrawConfigCollection configs = {}) const;
 
   Pencil() = default;
   ~Pencil() = default;

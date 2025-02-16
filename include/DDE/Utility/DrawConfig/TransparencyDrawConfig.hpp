@@ -1,4 +1,7 @@
+#pragma once
+
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
+
 namespace DDE {
 
 // TODO: Documentation

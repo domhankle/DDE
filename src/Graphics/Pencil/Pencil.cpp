@@ -11,18 +11,17 @@
  *
  * @param drawableObject the object to draw to the screen.
  */
-void DDE::Pencil::draw(
-    DDE::Drawable &drawableObject,
-    std::vector<std::unique_ptr<DDE::DrawConfig>> configs) const {
+void DDE::Pencil::draw(DDE::Drawable &drawableObject,
+                       DDE::DrawConfigCollection configs) const {
   DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
 
-  for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
+  for (DDE::DrawConfigEntry config : configs) {
     config->preDraw();
   }
 
   drawableObject.render();
 
-  for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
+  for (DDE::DrawConfigEntry config : configs) {
     config->postDraw();
   }
 }

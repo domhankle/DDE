@@ -1,5 +1,5 @@
-#include "DDE/Utility/DrawConfig/DrawConfig.hpp"
 #include <DDE/Graphics/Shape/Quad.hpp>
+#include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <Glad/glad/glad.h>
 
 #include <DDE/Engine/RenderEngine.hpp>
@@ -15,9 +15,8 @@
 #include <vector>
 
 void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
-  DDE::DrawConfigCollection configs = {};
-
-  configs.push_back(std::make_unique<DDE::TransparencyDrawConfig>());
+  DDE::DrawConfigCollection configs = {
+      DDE::GenerateDrawConfig(DDE::DrawConfigType::TRANSPARENCY)};
 
   pencil.draw(triangle, std::move(configs));
 }

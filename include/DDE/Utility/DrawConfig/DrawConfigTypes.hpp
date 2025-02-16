@@ -1,3 +1,5 @@
+#pragma once
+
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <memory>
 #include <vector>

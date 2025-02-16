@@ -1,8 +1,6 @@
 #pragma once
 
 #include <DDE/Utility/DrawConfig/DrawConfigTypes.hpp>
-#include <memory>
-#include <vector>
 
 namespace DDE {
 
