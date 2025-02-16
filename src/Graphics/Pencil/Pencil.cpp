@@ -1,4 +1,7 @@
-#include <DDE/Graphics/Pencil.hpp>
+#include <DDE/Graphics/Pencil/Pencil.hpp>
+#include <DDE/Utility/DrawConfig/DrawConfig.hpp>
+#include <cstdarg>
+#include <initializer_list>
 
 /**
  * This function is used to draw anything that inherits the
@@ -8,11 +11,17 @@
  *
  * @param drawableObject the object to draw to the screen.
  */
-void DDE::Pencil::draw(DDE::Drawable &drawableObject) const {
+void DDE::Pencil::draw(DDE::Drawable &drawableObject,
+                       std::initializer_list<DDE::DrawConfig *> configs) const {
   DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
 
-  // TODO: Decide where we want to actually do this
-  glDepthMask(GL_FALSE);
+  for (DDE::DrawConfig *config : configs) {
+    config->preDraw();
+  }
+
   drawableObject.render();
-  glDepthMask(GL_TRUE);
+
+  for (DDE::DrawConfig *config : configs) {
+    config->postDraw();
+  }
 }

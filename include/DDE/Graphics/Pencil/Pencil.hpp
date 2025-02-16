@@ -1,6 +1,8 @@
 #pragma once
 
 #include <DDE/Graphics/Drawable.hpp>
+#include <DDE/Utility/DrawConfig/DrawConfig.hpp>
+#include <initializer_list>
 
 namespace DDE {
 
@@ -13,7 +15,8 @@ class Pencil {
 
 private:
 public:
-  void draw(DDE::Drawable &drawableObject) const;
+  void draw(DDE::Drawable &drawableObject,
+            std::initializer_list<DDE::DrawConfig *> = {}) const;
 
   Pencil() = default;
   ~Pencil() = default;

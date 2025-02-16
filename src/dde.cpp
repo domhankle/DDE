@@ -3,12 +3,14 @@
 
 #include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Engine/ShaderEngine.hpp>
-#include <DDE/Graphics/Pencil.hpp>
+#include <DDE/Graphics/Pencil/Pencil.hpp>
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shape/Triangle.hpp>
 #include <DDE/Graphics/Sprite.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
+#include <DDE/Utility/DrawConfig/TransparencyDrawConfig.hpp>
+#include <functional>
 
 void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
   pencil.draw(triangle);
