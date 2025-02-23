@@ -9,10 +9,10 @@
  * shader stage to use.
  *
  * @param drawableObject the object to draw to the screen.
+ * @param configs The additional draw configurations to utilize.
  */
-void DDE::Pencil::draw(
-    DDE::Drawable &drawableObject,
-    std::vector<std::unique_ptr<DDE::DrawConfig>> &&configs) const {
+void DDE::Pencil::draw(DDE::Drawable &drawableObject,
+                       DDE::DrawConfigCollection &&configs) const {
   DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
 
   for (const std::unique_ptr<DrawConfig> &config : configs) {
