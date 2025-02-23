@@ -1,7 +1,5 @@
 #pragma once
 
-#include <DDE/Utility/DrawConfig/DrawConfigTypes.hpp>
-
 namespace DDE {
 
 /**
@@ -22,7 +20,5 @@ public:
   ~DrawConfig() = default;
   DrawConfig() = default;
 };
-
-DDE::DrawConfigEntry GenerateDrawConfig(DDE::DrawConfigType type);
 
 } // namespace DDE
