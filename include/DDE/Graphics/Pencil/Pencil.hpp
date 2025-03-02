@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDE/Engine/ShaderEngine.hpp"
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <concepts>
@@ -18,7 +19,6 @@ private:
 public:
   Pencil() = default;
   ~Pencil() = default;
-  void draw(DDE::Drawable &drawableObject);
 
   /**
    *
@@ -34,17 +34,24 @@ public:
    */
   template <typename... Configs>
     requires(std::derived_from<Configs, DDE::DrawConfig> && ...)
-  void draw(DDE::Drawable &drawableObject) const {
+  void draw(DDE::Drawable &drawableObject) {
 
+    // Activate the shader stage associated with the drawable object
+    DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
+
+    // Build a vector of all the draw configs
     std::vector<std::unique_ptr<DDE::DrawConfig>> configs = {};
     (configs.emplace_back(std::make_unique<Configs>()), ...);
 
+    // Call preDraw on all draw configs
     for (const auto &config : configs) {
       config->preDraw();
     }
 
+    // Render the drawable object
     drawableObject.render();
 
+    // Call postDraw on all draw configs
     for (const auto &config : configs) {
       config->postDraw();
     }
