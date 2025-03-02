@@ -12,14 +12,9 @@
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <DDE/Utility/DrawConfig/TransparencyDrawConfig.hpp>
 #include <functional>
-#include <memory>
-#include <vector>
 
 void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
-  DDE::DrawConfigCollection collection;
-
-  collection.addConfig<DDE::TransparencyDrawConfig>();
-  pencil.draw(triangle, std::move(collection));
+  pencil.draw(triangle);
 }
 
 int main() {
