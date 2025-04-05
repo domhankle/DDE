@@ -24,7 +24,8 @@ private:
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Quad(float width, float height);
+  Quad(float width, float height,
+       DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
   Quad() = delete;
   ~Quad() = default;
 
