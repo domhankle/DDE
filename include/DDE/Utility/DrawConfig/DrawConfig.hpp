@@ -1,12 +1,9 @@
 #pragma once
 
-#include <memory>
-#include <vector>
-
 namespace DDE {
 
 /**
- * @class DrawOption
+ * @class DrawConfig
  *
  * This class defines the shape of an object
  * that is used to specify two functions:

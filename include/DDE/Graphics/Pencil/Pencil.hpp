@@ -1,6 +1,6 @@
 #pragma once
 
-#include "DDE/Engine/ShaderEngine.hpp"
+#include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <concepts>
@@ -43,7 +43,7 @@ public:
     (configs.emplace_back(std::make_unique<Configs>()), ...);
 
     // Call preDraw on all draw configs
-    for (const auto &config : configs) {
+    for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
       config->preDraw();
     }
 
@@ -51,7 +51,7 @@ public:
     drawableObject.render();
 
     // Call postDraw on all draw configs
-    for (const auto &config : configs) {
+    for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
       config->postDraw();
     }
   }

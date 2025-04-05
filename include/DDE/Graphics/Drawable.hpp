@@ -1,9 +1,8 @@
 #pragma once
-#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
-#include "DDE/Graphics/Vertex/Vec4.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
+#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
-#include <vector>
 
 namespace DDE {
 

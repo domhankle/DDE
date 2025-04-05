@@ -1,6 +1,6 @@
-#include "DDE/Graphics/Vertex/Vec4.hpp"
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Quad.hpp>
+#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
 #include <vector>
