@@ -4,7 +4,13 @@
 
 namespace DDE {
 
-// TODO: Documentation
+/**
+ * @class TransparencyDrawConfig
+ *
+ * This is one of the utility DrawConfig classes that enables
+ * transparency on a draw call made on an instance of the
+ * Pencil class.
+ */
 class TransparencyDrawConfig : public DrawConfig {
 
 public:

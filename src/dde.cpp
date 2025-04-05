@@ -14,7 +14,7 @@
 #include <functional>
 
 void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
-  pencil.draw(triangle);
+  pencil.draw<DDE::TransparencyDrawConfig>(triangle);
 }
 
 int main() {

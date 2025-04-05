@@ -21,16 +21,15 @@ public:
   ~Pencil() = default;
 
   /**
-   *
-   * TODO: Update all this documentaiton
-   *
    * This function is used to draw anything that inherits the
    * DDE::Drawable class to the screen. Any DDE::Drawable object
    * must have a "render" function implemented and specify a
-   * shader stage to use.
+   * shader stage to use. This function also handles activating any
+   * any DrawConfig utility classes.
    *
+   * @param Configs Optional template parameter list to specify DrawConfig
+   *        classes.
    * @param drawableObject the object to draw to the screen.
-   * @param configs The additional draw configurations to utilize.
    */
   template <typename... Configs>
     requires(std::derived_from<Configs, DDE::DrawConfig> && ...)
