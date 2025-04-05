@@ -13,19 +13,18 @@
 #include <DDE/Utility/DrawConfig/TransparencyDrawConfig.hpp>
 #include <functional>
 
-void drawFunction(DDE::Pencil &pencil, DDE::Triangle &triangle) {
-  pencil.draw<DDE::TransparencyDrawConfig>(triangle);
+void drawFunction(DDE::Pencil &pencil, DDE::Quad &triangle) {
+  pencil.draw(triangle);
 }
 
 int main() {
   // Create the Render Engine
   DDE::RenderEngine engine;
+  DDE::Quad quad{1.0f, 1.0f};
 
-  DDE::Triangle triangle(2.0f, 2.0f, DDE::Vec4{0.3f, 0.8f, 1.0f, 0.1f});
   DDE::Pencil pencil;
-
-  // Start the Rendering Enginge
-  engine.start(drawFunction, std::ref(pencil), std::ref(triangle));
+  DDE::Triangle triangle(2.0f, 2.0f, DDE::Vec4{0.3f, 0.8f, 1.0f, 0.1f});
+  engine.start(drawFunction, std::ref(pencil), std::ref(quad));
 
   return 0;
 }

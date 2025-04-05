@@ -3,6 +3,7 @@
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
+#include <glm/glm.hpp>
 
 namespace DDE {
 
@@ -20,6 +21,8 @@ protected:
   DDE::ShaderStage _shaderPipelineID;
   // The color of the drawable object.
   DDE::Vec4 _color;
+  // The model matrix for this drawable object.
+  glm::mat4 _modelMatrix;
 
   virtual void _initializeGLObjects() = 0;
   virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
@@ -29,7 +32,13 @@ protected:
            DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
 
 public:
+  glm::mat4 getModelMatrix() const;
   DDE::ShaderStage getShaderPipeline() const;
+
+  void translate(glm::vec3 directionVector);
+  void rotate(float degrees, glm::vec3 rotationVector);
+  void scale(glm::vec3 scaleVector);
+
   ~Drawable() = default;
   virtual void render() = 0;
 };
