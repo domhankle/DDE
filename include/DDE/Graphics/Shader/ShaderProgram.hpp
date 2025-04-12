@@ -2,7 +2,8 @@
 
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <Glad/glad/glad.h>
-#include <initializer_list>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <vector>
 
 namespace DDE {
@@ -27,12 +28,17 @@ private:
 public:
   std::vector<DDE::Shader> getShaderSources() const;
   unsigned int getProgramObject() const;
+
   void activate() const;
 
-  ShaderProgram(std::initializer_list<Shader> shaders);
+  int getUniformLocation(std::string uniformName) const;
 
-  ~ShaderProgram() = default;
+  glm::mat4 getMatrix4x4Uniform(std::string uniformName) const;
+  void setMatrix4x4Uniform(std::string uniformName, glm::mat4 matrix);
+
+  ShaderProgram(std::initializer_list<Shader> shaders);
   ShaderProgram() = delete;
+  ~ShaderProgram() = default;
 };
 
 } // namespace DDE

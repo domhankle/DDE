@@ -46,7 +46,6 @@ public:
     for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
       config->preDraw();
     }
-
     // Render the drawable object
     drawableObject.render();
 

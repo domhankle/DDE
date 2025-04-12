@@ -1,3 +1,7 @@
+#include "Glad/glad/glad.h"
+#include "glm/ext/matrix_float4x4.hpp"
+#include "glm/fwd.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <cstdlib>
 #include <exception>
@@ -114,4 +118,27 @@ void DDE::ShaderProgram::_linkProgram(std::vector<Shader> &sources) {
       glDeleteShader(shader.getShaderObject());
     }
   }
+}
+
+// TODO: Documentation
+int DDE::ShaderProgram::getUniformLocation(std::string uniformName) const {
+  return glGetUniformLocation(this->_programObject, uniformName.c_str());
+}
+
+// TODO: Documentation
+glm::mat4
+DDE::ShaderProgram::getMatrix4x4Uniform(std::string uniformName) const {
+  float matrix[16];
+  int location = this->getUniformLocation(uniformName);
+
+  glGetUniformfv(this->_programObject, location, matrix);
+
+  return glm::make_mat4(matrix);
+}
+
+// TODO: Documentation
+void DDE::ShaderProgram::setMatrix4x4Uniform(std::string uniformName,
+                                             glm::mat4 matrix) {
+  int location = this->getUniformLocation(uniformName);
+  glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
