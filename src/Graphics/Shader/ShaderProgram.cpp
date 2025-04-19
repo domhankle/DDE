@@ -1,10 +1,11 @@
-#include "Glad/glad/glad.h"
-#include "glm/ext/matrix_float4x4.hpp"
-#include "glm/fwd.hpp"
-#include "glm/gtc/type_ptr.hpp"
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
+#include <Glad/glad/glad.h>
 #include <cstdlib>
 #include <exception>
+#include <glm/ext/matrix_float3x3.hpp>
+#include <glm/ext/matrix_float4x4.hpp>
+#include <glm/fwd.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <sstream>
 
@@ -120,12 +121,27 @@ void DDE::ShaderProgram::_linkProgram(std::vector<Shader> &sources) {
   }
 }
 
-// TODO: Documentation
+/**
+ * This is utilized to get the location of a uniform variable
+ * that is on a shader program.
+ *
+ * @param uniformName The name of the uniform that you are querying the location
+ *                    for
+ *
+ * @returns The OpenGL shader location of the uniform variable
+ */
 int DDE::ShaderProgram::getUniformLocation(std::string uniformName) const {
   return glGetUniformLocation(this->_programObject, uniformName.c_str());
 }
 
-// TODO: Documentation
+/**
+ * This function is utilized to get a 4x4 matrix at a specific
+ * uniform in a shader.
+ *
+ * @param uniformName The name of the uniform that we are querying for
+ *
+ * @returns The 4x4 matrix at the uniform name specified
+ */
 glm::mat4
 DDE::ShaderProgram::getMatrix4x4Uniform(std::string uniformName) const {
   float matrix[16];
@@ -136,9 +152,46 @@ DDE::ShaderProgram::getMatrix4x4Uniform(std::string uniformName) const {
   return glm::make_mat4(matrix);
 }
 
-// TODO: Documentation
+/**
+ * This function is utilized to set a 4x4 matrix at a specific
+ * uniform in a shader.
+ *
+ * @param uniformName The name of we are changing
+ * @param matrix The 4x4 matrix we are setting the uniform to
+ */
 void DDE::ShaderProgram::setMatrix4x4Uniform(std::string uniformName,
                                              glm::mat4 matrix) {
   int location = this->getUniformLocation(uniformName);
   glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
+/**
+ * This function is utilized to get a 3x3 matrix at a specific
+ * uniform in a shader.
+ *
+ * @param uniformName The name of the uniform that we are querying for
+ *
+ * @returns The 3x3 matrix at the uniform name specified
+ */
+glm::mat3
+DDE::ShaderProgram::getMatrix3x3Uniform(std::string uniformName) const {
+  float matrix[9];
+  int location = this->getUniformLocation(uniformName);
+
+  glGetUniformfv(this->_programObject, location, matrix);
+
+  return glm::make_mat3(matrix);
+}
+
+/**
+ * This function is utilized to set a 3x3 matrix at a specific
+ * uniform in a shader.
+ *
+ * @param uniformName The name of we are changing
+ * @param matrix The 3x3 matrix we are setting the uniform to
+ */
+void DDE::ShaderProgram::setMatrix3x3Uniform(std::string uniformName,
+                                             glm::mat3 matrix) {
+  int location = this->getUniformLocation(uniformName);
+  glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
