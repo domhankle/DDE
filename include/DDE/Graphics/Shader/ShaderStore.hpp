@@ -36,6 +36,7 @@ public:
 
   unsigned int loadShaderPipeline(DDE::ShaderStage stage);
   DDE::ShaderStage getActiveShaderStage() const;
+  DDE::ShaderProgram getActiveShaderProgram() const;
 };
 
 } // namespace DDE

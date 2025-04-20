@@ -1,3 +1,4 @@
+#include "glm/fwd.hpp"
 #include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <Glad/glad/glad.h>
@@ -13,8 +14,9 @@
 #include <DDE/Utility/DrawConfig/TransparencyDrawConfig.hpp>
 #include <functional>
 
-void drawFunction(DDE::Pencil &pencil, DDE::Quad &triangle) {
-  pencil.draw(triangle);
+void drawFunction(DDE::Pencil &pencil, DDE::Quad &quad) {
+  pencil.draw(quad);
+  quad.rotate(1.0, glm::vec3(0.0, 0.0, 1.0));
 }
 
 int main() {
@@ -23,7 +25,6 @@ int main() {
   DDE::Quad quad{1.0f, 1.0f};
 
   DDE::Pencil pencil;
-  DDE::Triangle triangle(2.0f, 2.0f, DDE::Vec4{0.3f, 0.8f, 1.0f, 0.1f});
   engine.start(drawFunction, std::ref(pencil), std::ref(quad));
 
   return 0;

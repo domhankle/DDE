@@ -1,3 +1,4 @@
+#include "DDE/Graphics/Shader/ShaderProgram.hpp"
 #include <Glad/glad/glad.h>
 
 #include <DDE/Graphics/Shader/ShaderStore.hpp>
@@ -70,4 +71,9 @@ void DDE::ShaderStore::_cacheShaderPipeline(DDE::ShaderStage stage) {
  */
 DDE::ShaderStage DDE::ShaderStore::getActiveShaderStage() const {
   return this->_currentActiveStage;
+}
+
+// TODO: Documentation
+DDE::ShaderProgram DDE::ShaderStore::getActiveShaderProgram() const {
+  return this->_pipelineMappings.at(this->_currentActiveStage);
 }

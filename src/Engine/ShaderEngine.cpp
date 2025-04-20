@@ -1,4 +1,5 @@
 #include <DDE/Engine/ShaderEngine.hpp>
+#include <glm/fwd.hpp>
 
 // Define the static member variable shaderStore to a default DDE::ShaderStore
 DDE::ShaderStore DDE::ShaderEngine::shaderStore;
@@ -14,4 +15,12 @@ void DDE::ShaderEngine::ActivateShaderStage(DDE::ShaderStage stage) {
   if (ShaderEngine::shaderStore.getActiveShaderStage() != stage) {
     glUseProgram(ShaderEngine::shaderStore.loadShaderPipeline(stage));
   }
+}
+
+// TODO: Documentation
+void DDE::ShaderEngine::UpdateModelMatrix(glm::mat4 matrix) {
+  DDE::ShaderProgram activeProgram =
+      ShaderEngine::shaderStore.getActiveShaderProgram();
+  // TODO: Put 'dde_model_matrix' into an enum
+  activeProgram.setMatrix4x4Uniform("dde_model_matrix", matrix);
 }
