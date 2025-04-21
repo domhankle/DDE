@@ -1,5 +1,6 @@
 #include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
+#include <DDE/Utility/PositionTypes.hpp>
 #include <Glad/glad/glad.h>
 #include <glm/fwd.hpp>
 
@@ -18,8 +19,6 @@
 // Base translation vector
 glm::vec3 translation(0.01f, 0.0f, 0.0f);
 
-// Vector representing our rotation axis
-glm::vec3 rotationAxis(0.0f, 0.0f, 1.0f);
 // Our degree of rotation per transformation
 const float rotationDegrees = 0.01f;
 
@@ -35,7 +34,9 @@ void translateQuad(DDE::Quad &quad) {
 }
 
 // Helper function for rotating a quad
-void rotateQuad(DDE::Quad &quad) { quad.rotate(rotationDegrees, rotationAxis); }
+void rotateQuad(DDE::Quad &quad) {
+  quad.rotate(rotationDegrees, DDE::Z_AXIS_VECTOR);
+}
 
 // Helper function for scaling a quad
 void scaleQuad(DDE::Quad &quad) {

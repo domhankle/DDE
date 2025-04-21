@@ -1,5 +1,5 @@
-#include "DDE/Utility/ShaderTypes.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
+#include <DDE/Utility/ShaderTypes.hpp>
 #include <glm/fwd.hpp>
 
 // Define the static member variable shaderStore to a default DDE::ShaderStore

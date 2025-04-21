@@ -27,7 +27,7 @@ protected:
   // The current position of this drawable object.
   glm::vec3 _position;
 
-  // The current size of this drawable object.
+  // The current scale of this drawable object on each axis.
   glm::vec3 _scale;
 
   virtual void _initializeGLObjects() = 0;

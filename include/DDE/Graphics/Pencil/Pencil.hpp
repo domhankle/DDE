@@ -47,7 +47,7 @@ public:
       config->preDraw();
     }
 
-    // TODO: Documentation
+    // Update the Model Matrix to the drawable object's model matrix
     DDE::ShaderEngine::UpdateModelMatrix(drawableObject.getModelMatrix());
     // Render the drawable object
     drawableObject.render();

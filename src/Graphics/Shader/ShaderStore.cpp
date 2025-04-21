@@ -1,8 +1,7 @@
-#include "DDE/Graphics/Shader/ShaderProgram.hpp"
-#include <Glad/glad/glad.h>
-
+#include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shader/ShaderStore.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
+#include <Glad/glad/glad.h>
 #include <iostream>
 #include <stdexcept>
 
