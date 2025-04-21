@@ -1,3 +1,4 @@
+#include "DDE/Utility/ShaderTypes.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <glm/fwd.hpp>
 
@@ -17,10 +18,20 @@ void DDE::ShaderEngine::ActivateShaderStage(DDE::ShaderStage stage) {
   }
 }
 
-// TODO: Documentation
+/**
+ * This function is used by the ShaderEngine to update the
+ * active model matrix in the active DDE Shader to ensure that
+ * the object that is about to be drawn is accurate to what it's
+ * model matrix is.
+ *
+ * @param matrix The matrix to update the 'dde_model_matrix' uniform
+ *               variable to.
+ */
 void DDE::ShaderEngine::UpdateModelMatrix(glm::mat4 matrix) {
+  // Get the active ShaderProgram object from our singleton ShaderStore
   DDE::ShaderProgram activeProgram =
       ShaderEngine::shaderStore.getActiveShaderProgram();
-  // TODO: Put 'dde_model_matrix' into an enum
-  activeProgram.setMatrix4x4Uniform("dde_model_matrix", matrix);
+
+  // Set our 'dde_model_matrix' uniform variable to the matrix passed
+  activeProgram.setMatrix4x4Uniform(DDE::ShaderUniform::MODEL_MATRIX, matrix);
 }

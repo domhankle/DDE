@@ -40,10 +40,10 @@ void rotateQuad(DDE::Quad &quad) { quad.rotate(rotationDegrees, rotationAxis); }
 // Helper function for scaling a quad
 void scaleQuad(DDE::Quad &quad) {
   quad.scale(scale);
-  if (quad.getSize().x >= 2.0f) {
+  if (quad.getScale().x >= 2.0f) {
     scale.x = 0.99f;
     scale.y = 0.99f;
-  } else if (quad.getSize().x <= 0.5f) {
+  } else if (quad.getScale().x <= 0.5f) {
     scale.x = 1.01f;
     scale.y = 1.01f;
   }

@@ -24,11 +24,11 @@ protected:
   // The model matrix for this drawable object.
   glm::mat4 _modelMatrix;
 
-  // TODO: Documentation
-  DDE::Vec4 _position;
+  // The current position of this drawable object.
+  glm::vec3 _position;
 
-  // TODO: Documentation
-  DDE::Vec4 _size;
+  // The current size of this drawable object.
+  glm::vec3 _scale;
 
   virtual void _initializeGLObjects() = 0;
   virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
@@ -40,8 +40,8 @@ protected:
 public:
   glm::mat4 getModelMatrix() const;
   DDE::ShaderStage getShaderPipeline() const;
-  DDE::Vec4 getPosition() const;
-  DDE::Vec4 getSize() const;
+  glm::vec3 getPosition() const;
+  glm::vec3 getScale() const;
 
   void translate(glm::vec3 directionVector);
   void rotate(float degrees, glm::vec3 rotationVector);

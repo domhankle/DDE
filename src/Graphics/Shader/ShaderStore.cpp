@@ -73,7 +73,11 @@ DDE::ShaderStage DDE::ShaderStore::getActiveShaderStage() const {
   return this->_currentActiveStage;
 }
 
-// TODO: Documentation
+/**
+ * Retrive the ShaderProgram associated with the currently active ShaderStage
+ *
+ * @returns The currently active ShaderProgram in the ShaderEngine
+ */
 DDE::ShaderProgram DDE::ShaderStore::getActiveShaderProgram() const {
   return this->_pipelineMappings.at(this->_currentActiveStage);
 }
