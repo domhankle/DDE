@@ -20,6 +20,8 @@ public:
   static DDE::ShaderStore shaderStore;
 
   static void ActivateShaderStage(DDE::ShaderStage stage);
+  static void UpdateModelMatrix(glm::mat4 matrix);
+
   ShaderEngine() = delete;
 };
 
