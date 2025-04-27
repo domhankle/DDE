@@ -3,6 +3,7 @@
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shader/ShaderStore.hpp>
+#include <glm/fwd.hpp>
 
 namespace DDE {
 
@@ -21,8 +22,11 @@ public:
 
   static void ActivateShaderStage(DDE::ShaderStage stage);
   static void UpdateModelMatrix(glm::mat4 matrix);
+  static void UpdateProjectionMatrix(glm::mat4 matrix);
 
   ShaderEngine() = delete;
+
+private:
 };
 
 } // namespace DDE
