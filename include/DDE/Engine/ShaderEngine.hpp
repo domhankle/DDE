@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DDE/Graphics/Shader/Frustum/Frustum.hpp"
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shader/ShaderStore.hpp>
@@ -22,7 +23,7 @@ public:
 
   static void ActivateShaderStage(DDE::ShaderStage stage);
   static void UpdateModelMatrix(glm::mat4 matrix);
-  static void UpdateProjectionMatrix(glm::mat4 matrix);
+  static void UpdateProjectionMatrix(DDE::Frustum frustum);
 
   ShaderEngine() = delete;
 

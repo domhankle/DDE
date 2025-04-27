@@ -1,3 +1,4 @@
+#include "DDE/Graphics/Shader/Frustum/Frustum.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
 #include <glm/fwd.hpp>
@@ -16,10 +17,7 @@ void DDE::ShaderEngine::ActivateShaderStage(DDE::ShaderStage stage) {
 
   if (ShaderEngine::shaderStore.getActiveShaderStage() != stage) {
     glUseProgram(ShaderEngine::shaderStore.loadShaderPipeline(stage));
-    // TODO: We will move this projection matrix logic
-    glm::mat4 projectionMatrix =
-        glm::ortho(-100.0f, 100.0f, -100.0f, 100.0f, 0.0f, 100.0f);
-    DDE::ShaderEngine::UpdateProjectionMatrix(projectionMatrix);
+    DDE::ShaderEngine::UpdateProjectionMatrix(DDE::Frustum());
   }
 }
 
@@ -42,10 +40,10 @@ void DDE::ShaderEngine::UpdateModelMatrix(glm::mat4 matrix) {
 }
 
 // TODO: Documentation
-void DDE::ShaderEngine::UpdateProjectionMatrix(glm::mat4 matrix) {
+void DDE::ShaderEngine::UpdateProjectionMatrix(DDE::Frustum frustum) {
   DDE::ShaderProgram activeProgram =
       ShaderEngine::shaderStore.getActiveShaderProgram();
 
   activeProgram.setMatrix4x4Uniform(DDE::ShaderUniform::PROJECTION_MATRIX,
-                                    matrix);
+                                    frustum.getProjectionMatrix());
 }

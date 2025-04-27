@@ -1,4 +1,3 @@
-#include "glm/ext/matrix_clip_space.hpp"
 #include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Pencil/Pencil.hpp>
