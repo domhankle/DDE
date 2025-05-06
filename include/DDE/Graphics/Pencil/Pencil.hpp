@@ -7,7 +7,6 @@
 #include <memory>
 
 namespace DDE {
-
 /**
  * @class Pencil
  *

@@ -1,6 +1,5 @@
 #pragma once
-
-#include "DDE/Graphics/Shader/Frustum/Frustum.hpp"
+#include <DDE/Graphics/Shader/Frustum/Frustum.hpp>
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shader/ShaderStore.hpp>
@@ -17,17 +16,21 @@ namespace DDE {
  * etc.
  */
 class ShaderEngine {
-public:
+private:
   // The static single shader store to be used in the lifetime of a DDE app.
-  static DDE::ShaderStore shaderStore;
+  static DDE::ShaderStore _shaderStore;
 
+  // The static frustum attached to the Shader Engine
+  static DDE::Frustum _frustum;
+
+public:
   static void ActivateShaderStage(DDE::ShaderStage stage);
+  static void UpdateFrustum(DDE::Frustum frustum);
+
   static void UpdateModelMatrix(glm::mat4 matrix);
-  static void UpdateProjectionMatrix(DDE::Frustum frustum);
+  static void UpdateProjectionMatrix(glm::mat4 matrix);
 
   ShaderEngine() = delete;
-
-private:
 };
 
 } // namespace DDE
