@@ -26,9 +26,12 @@ private:
 
   float _fov;
 
+  float _aspectRatio;
+
   DDE::FrustumType _type;
 
 public:
+  // TODO: Extract this to a FrustumConfig Type
   Frustum(DDE::FrustumType type = DDE::FrustumType::ORTHOGRAPHIC,
           float xMin = -100.0f, float xMax = 100.0f, float yMin = -100.0f,
           float yMax = 100.0f, float zMin = 0.0f, float zMax = 100.0f);
@@ -36,17 +39,31 @@ public:
   glm::mat4 getProjectionMatrix() const;
 
   void setType(DDE::FrustumType type);
+  DDE::FrustumType getType() const;
 
   void setXClipMinimum(float xMin);
+  float getXClipMinimum() const;
+
   void setXClipMaximum(float xMax);
+  float getXClipMaximum() const;
 
   void setYClipMinimum(float yMin);
+  float getYClipMinimum() const;
+
   void setYClipMaximum(float yMax);
+  float getYClipMaximum() const;
 
   void setZClipMinimum(float zMin);
+  float getZClipMinimum() const;
+
   void setZClipMaximum(float zMax);
+  float getZClipMaximum() const;
 
   void setFOV(float fov);
+  float getFOV() const;
+
+  void setAspectRatio(float aspectRatio);
+  float getAspectRatio() const;
 };
 
 } // namespace DDE
