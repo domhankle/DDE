@@ -1,5 +1,8 @@
-#include "glm/fwd.hpp"
+#pragma once
+
+#include <DDE/Graphics/Shader/Frustum/FrustumConfig.hpp>
 #include <DDE/Graphics/Shader/Frustum/FrustumTypes.hpp>
+#include <glm/fwd.hpp>
 
 namespace DDE {
 /**
@@ -15,26 +18,10 @@ namespace DDE {
  */
 class Frustum {
 private:
-  float _xMin;
-  float _xMax;
-
-  float _yMin;
-  float _yMax;
-
-  float _zMin;
-  float _zMax;
-
-  float _fov;
-
-  float _aspectRatio;
-
-  DDE::FrustumType _type;
+  DDE::FrustumConfig _config;
 
 public:
-  // TODO: Extract this to a FrustumConfig Type
-  Frustum(DDE::FrustumType type = DDE::FrustumType::ORTHOGRAPHIC,
-          float xMin = -100.0f, float xMax = 100.0f, float yMin = -100.0f,
-          float yMax = 100.0f, float zMin = 0.0f, float zMax = 100.0f);
+  Frustum(DDE::FrustumConfig config = DDE::FrustumConfig{});
 
   glm::mat4 getProjectionMatrix() const;
 
@@ -64,6 +51,9 @@ public:
 
   void setAspectRatio(float aspectRatio);
   float getAspectRatio() const;
+
+  void setConfig(DDE::FrustumConfig &config);
+  DDE::FrustumConfig getConfig() const;
 };
 
 } // namespace DDE
