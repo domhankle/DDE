@@ -18,6 +18,7 @@ namespace DDE {
  */
 class Frustum {
 private:
+  // This object holds the Frustum properties
   DDE::FrustumConfig _config;
 
 public:
