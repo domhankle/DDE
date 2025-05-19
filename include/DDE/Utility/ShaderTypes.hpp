@@ -10,6 +10,7 @@ enum ShaderStage { NONE = -1, PRIMITIVE = 0, SCENE = 1, OBJECT = 2 };
    its shader source code */
 struct ShaderUniform {
   inline static const std::string MODEL_MATRIX = "dde_model_matrix";
+  inline static const std::string PROJECTION_MATRIX = "dde_projection_matrix";
 };
 
 } // namespace DDE

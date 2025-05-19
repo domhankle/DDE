@@ -1,23 +1,22 @@
-#include <DDE/Graphics/Shape/Quad.hpp>
-#include <DDE/Utility/DrawConfig/DrawConfig.hpp>
-#include <DDE/Utility/PositionTypes.hpp>
-#include <Glad/glad/glad.h>
-#include <glm/fwd.hpp>
-
 #include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Pencil/Pencil.hpp>
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
+#include <DDE/Graphics/Shape/Quad.hpp>
 #include <DDE/Graphics/Shape/Triangle.hpp>
 #include <DDE/Graphics/Sprite.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
+#include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <DDE/Utility/DrawConfig/TransparencyDrawConfig.hpp>
+#include <DDE/Utility/PositionTypes.hpp>
+#include <Glad/glad/glad.h>
 #include <functional>
+#include <glm/fwd.hpp>
 #include <vector>
 
 // Base translation vector
-glm::vec3 translation(0.01f, 0.0f, 0.0f);
+glm::vec3 translation(1.0f, 0.0f, 0.0f);
 
 // Our degree of rotation per transformation
 const float rotationDegrees = 0.01f;
@@ -28,7 +27,7 @@ glm::vec3 scale(1.01f, 1.01f, 0.0f);
 // Helper function for translating a quad
 void translateQuad(DDE::Quad &quad) {
   quad.translate(translation);
-  if (quad.getPosition().x >= 1.0f || quad.getPosition().x <= -1.0f) {
+  if (quad.getPosition().x >= 100.0f || quad.getPosition().x <= -100.0f) {
     translation.x *= -1;
   }
 }
@@ -72,13 +71,13 @@ void drawFunction(DDE::Pencil &pencil, std::vector<DDE::Quad> &quads) {
 // Helper function to generate our Quad shapes
 std::vector<DDE::Quad> getQuads() {
 
-  DDE::Quad quad1{0.25f, 0.25f};
-  quad1.translate(glm::vec3(0, 0.5f, 0));
+  DDE::Quad quad1{25.0, 25.0f};
+  quad1.translate(glm::vec3(0, 50.0f, 0));
 
-  DDE::Quad quad2{0.25f, 0.25f};
+  DDE::Quad quad2{25.0f, 25.0f};
 
-  DDE::Quad quad3{0.25f, 0.25f};
-  quad3.translate(glm::vec3(0, -0.5f, 0));
+  DDE::Quad quad3{25.0f, 25.0f};
+  quad3.translate(glm::vec3(0, -50.0f, 0));
 
   return std::vector<DDE::Quad>{quad1, quad2, quad3};
 }
