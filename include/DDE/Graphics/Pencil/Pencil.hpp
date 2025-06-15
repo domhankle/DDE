@@ -48,6 +48,10 @@ public:
 
     // Update the Model Matrix to the drawable object's model matrix
     DDE::ShaderEngine::UpdateModelMatrix(drawableObject.getModelMatrix());
+    // Give the default projection matrix
+    DDE::ShaderEngine::UpdateProjectionMatrix(
+        DDE::Frustum().getProjectionMatrix());
+
     // Render the drawable object
     drawableObject.render();
 

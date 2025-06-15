@@ -5,9 +5,6 @@
 // Define the static member variable shaderStore to a default DDE::ShaderStore
 DDE::ShaderStore DDE::ShaderEngine::_shaderStore;
 
-// Define the static member variable frustum to a default DDE::Frustum
-DDE::Frustum DDE::ShaderEngine::_frustum;
-
 /**
  * This function is what should be utilized to activate a specific
  * shader stage in other classes. It handles lazily loading the
@@ -18,8 +15,6 @@ DDE::Frustum DDE::ShaderEngine::_frustum;
 void DDE::ShaderEngine::ActivateShaderStage(DDE::ShaderStage stage) {
   if (ShaderEngine::_shaderStore.getActiveShaderStage() != stage) {
     glUseProgram(ShaderEngine::_shaderStore.loadShaderPipeline(stage));
-    DDE::ShaderEngine::UpdateProjectionMatrix(
-        ShaderEngine::_frustum.getProjectionMatrix());
   }
 }
 
@@ -57,17 +52,4 @@ void DDE::ShaderEngine::UpdateProjectionMatrix(glm::mat4 matrix) {
   // Set our 'dde_projection_matrix' uniform variable to the matrix passed
   activeProgram.setMatrix4x4Uniform(DDE::ShaderUniform::PROJECTION_MATRIX,
                                     matrix);
-}
-
-/**
- * This function is used to update the attached Frustum to the
- * ShaderEngine. The ShaderEngine frustum is used to evaluate
- * the projection matrix everytime ActivateShaderStage is called.
- * The ShaderEngine starts with a default 200x200x100 orthographic
- * frustum.
- *
- * @param frustum The frustum object we are attaching to the ShaderEngine
- */
-void DDE::ShaderEngine::UpdateFrustum(DDE::Frustum frustum) {
-  DDE::ShaderEngine::_frustum = frustum;
 }
