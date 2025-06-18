@@ -1,6 +1,7 @@
 #include <DDE/Engine/RenderEngine.hpp>
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Pencil/Pencil.hpp>
+#include <DDE/Graphics/Shader/Camera/Camera.hpp>
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Graphics/Shape/Quad.hpp>

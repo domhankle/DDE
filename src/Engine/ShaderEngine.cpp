@@ -1,4 +1,6 @@
 #include <DDE/Engine/ShaderEngine.hpp>
+#include <DDE/Graphics/Shader/Camera/Camera.hpp>
+#include <DDE/Graphics/Shader/ShaderProgram.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
 #include <glm/fwd.hpp>
 
