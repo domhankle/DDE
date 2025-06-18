@@ -126,6 +126,22 @@ void DDE::Frustum::setFOV(float fov) { this->_config.fov = fov; }
 float DDE::Frustum::getFOV() const { return this->_config.fov; }
 
 /**
+ * Used to dynamically change the aspect ratio of a Frustum
+ *
+ * @param aspectRatio The new apect ratio of the Frustum
+ */
+void DDE::Frustum::setAspectRatio(float aspectRatio) {
+  this->_config.aspectRatio = aspectRatio;
+}
+
+/**
+ * This function is used to get the aspectRatio property on the Frustum
+ *
+ * @returns The aspect ratio of the Frustum
+ */
+float DDE::Frustum::getAspectRatio() const { return this->_config.aspectRatio; }
+
+/**
  * Used to dynamically change the config object of a Frustum.
  *
  * @param config The new config object

@@ -40,7 +40,7 @@ struct FrustumConfig {
 
   FrustumConfig(DDE::FrustumType type = DDE::FrustumType::ORTHOGRAPHIC,
                 float xMin = -100.0f, float xMax = 100.0f, float yMin = -100.0f,
-                float yMax = 100.0f, float zMin = 0.0f, float zMax = 100.0f,
+                float yMax = 100.0f, float zMin = 0.1f, float zMax = 100.0f,
                 float fov = 0.0f, float aspectRatio = 0.0f);
 };
 

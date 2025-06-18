@@ -1,4 +1,5 @@
 #pragma once
+#include <DDE/Graphics/Shader/Camera/Camera.hpp>
 #include <DDE/Graphics/Shader/Frustum/Frustum.hpp>
 #include <DDE/Graphics/Shader/Shader.hpp>
 #include <DDE/Graphics/Shader/ShaderProgram.hpp>
