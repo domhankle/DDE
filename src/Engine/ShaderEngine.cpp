@@ -40,9 +40,7 @@ void DDE::ShaderEngine::UpdateModelMatrix(glm::mat4 matrix) {
 
 /**
  * This function is used to update the projection matrix on
- * the currently active shader. Note that the projection matrix
- * is set to whatever is evaluated from the ShaderEngine's attached
- * Frustum everytime ActivateShaderStage is called.
+ * the currently active shader.
  *
  * @param matrix The matrix we are setting the projection matrix uniform to
  */
@@ -54,4 +52,19 @@ void DDE::ShaderEngine::UpdateProjectionMatrix(glm::mat4 matrix) {
   // Set our 'dde_projection_matrix' uniform variable to the matrix passed
   activeProgram.setMatrix4x4Uniform(DDE::ShaderUniform::PROJECTION_MATRIX,
                                     matrix);
+}
+
+/**
+ * This function is used to update the view matrix on
+ * the currently active shader.
+ *
+ * @param matrix The matrix we are setting the view matrix uniform to
+ */
+void DDE::ShaderEngine::UpdateViewMatrix(glm::mat4 matrix) {
+  // Get the active ShaderProgram object from our singleton ShaderStore
+  DDE::ShaderProgram activeProgram =
+      ShaderEngine::_shaderStore.getActiveShaderProgram();
+
+  // Set our 'dde_view_matrix' uniform variable to the matrix passed
+  activeProgram.setMatrix4x4Uniform(DDE::ShaderUniform::VIEW_MATRIX, matrix);
 }

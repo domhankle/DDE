@@ -25,6 +25,7 @@ public:
   static void ActivateShaderStage(DDE::ShaderStage stage);
   static void UpdateModelMatrix(glm::mat4 matrix);
   static void UpdateProjectionMatrix(glm::mat4 matrix);
+  static void UpdateViewMatrix(glm::mat4 matrix);
 
   ShaderEngine() = delete;
 };
