@@ -15,15 +15,22 @@ namespace DDE {
 class Scene {
 
 private:
+  // The camera object that is being used for this Scene
   DDE::Camera _camera;
+  // All of the Drawable objects contained within this Scene
   std::vector<std::unique_ptr<DDE::Drawable>> _drawableObjects;
 
 public:
   Scene() = default;
   ~Scene() = default;
 
-  DDE::Camera &getSceneCamera();
+  DDE::Camera &getCamera();
   DDE::Drawable &getDrawableObject(unsigned int index);
+
+  void setCamera(const DDE::Camera &camera);
+
+  void addDrawableObject(std::unique_ptr<DDE::Drawable> object);
+  void removeDrawableObject(unsigned int index);
 };
 
 } // namespace DDE
