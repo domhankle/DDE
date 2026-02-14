@@ -25,6 +25,7 @@ public:
   ~Scene() = default;
 
   DDE::Camera &getCamera();
+  std::vector<std::unique_ptr<DDE::Drawable>> &getDrawableObjects();
   DDE::Drawable &getDrawableObject(unsigned int index);
 
   void setCamera(const DDE::Camera &camera);

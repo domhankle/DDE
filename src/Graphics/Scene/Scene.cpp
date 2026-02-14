@@ -7,6 +7,11 @@
  */
 DDE::Camera &DDE::Scene::getCamera() { return this->_camera; }
 
+// TODO: Documentation
+std::vector<std::unique_ptr<DDE::Drawable>> &DDE::Scene::getDrawableObjects() {
+  return this->_drawableObjects;
+}
+
 /**
  * This getter is used to retrieve one of the drawable objects
  * inside of the Scene.

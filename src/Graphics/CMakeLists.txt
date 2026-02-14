@@ -5,6 +5,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Shader)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Buffer)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Pencil)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Scene)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Artist)
 
 set(GRAPHICS_SOURCES 
   ${CMAKE_CURRENT_SOURCE_DIR}/Sprite.cpp 
@@ -16,4 +17,5 @@ set(GRAPHICS_SOURCES
   ${BUFFER_SOURCES}
   ${PENCIL_SOURCES}
   ${SCENE_SOURCES}
+  ${ARTIST_SOURCES}
   PARENT_SCOPE)

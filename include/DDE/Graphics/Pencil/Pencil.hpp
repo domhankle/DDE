@@ -34,9 +34,6 @@ public:
     requires(std::derived_from<Configs, DDE::DrawConfig> && ...)
   void draw(DDE::Drawable &drawableObject) {
 
-    // Activate the shader stage associated with the drawable object
-    DDE::ShaderEngine::ActivateShaderStage(drawableObject.getShaderPipeline());
-
     // Build a vector of all the draw configs
     std::vector<std::unique_ptr<DDE::DrawConfig>> configs = {};
     (configs.emplace_back(std::make_unique<Configs>()), ...);
