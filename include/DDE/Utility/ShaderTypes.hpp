@@ -4,7 +4,7 @@
 namespace DDE {
 
 // This enum is used to represent Shader Stages
-enum ShaderStage { NONE = -1, PRIMITIVE = 0, SCENE = 1, OBJECT = 2 };
+enum ShaderStage { NONE = -1, UNLIT = 0, SCENE = 1, OBJECT = 2 };
 
 /* This struct holds the DDE specific uniform variables that will be found in
    its shader source code */

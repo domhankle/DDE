@@ -43,7 +43,7 @@ unsigned int DDE::ShaderStore::loadShaderPipeline(DDE::ShaderStage stage) {
  */
 void DDE::ShaderStore::_cacheShaderPipeline(DDE::ShaderStage stage) {
   switch (stage) {
-  case DDE::ShaderStage::PRIMITIVE:
+  case DDE::ShaderStage::UNLIT:
     this->_pipelineMappings.insert(
         {stage,
          DDE::ShaderProgram(
