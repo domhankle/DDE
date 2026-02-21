@@ -1,7 +1,8 @@
 #pragma once
 
-#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Shape.hpp>
+#include <glm/glm.hpp>
 
 namespace DDE {
 
@@ -24,8 +25,7 @@ private:
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Quad(float width, float height,
-       DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
+  Quad(float width, float height, glm::vec4 color = glm::vec4{1.0f});
   Quad() = delete;
   ~Quad() = default;
 

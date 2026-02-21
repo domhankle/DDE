@@ -1,7 +1,6 @@
 #pragma once
 #include <DDE/Engine/ShaderEngine.hpp>
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
-#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <DDE/Utility/ShaderTypes.hpp>
 #include <glm/glm.hpp>
 
@@ -20,7 +19,7 @@ protected:
   // The shader pipeline that this drawable will utilize.
   DDE::ShaderStage _shaderPipelineID;
   // The color of the drawable object.
-  DDE::Vec4 _color;
+  glm::vec4 _color;
   // The model matrix for this drawable object.
   glm::mat4 _modelMatrix;
 
@@ -35,7 +34,7 @@ protected:
 
   Drawable() = delete;
   Drawable(DDE::ShaderStage shaderPipeline,
-           DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
+           glm::vec4 color = glm::vec4{1.0f, 1.0f, 1.0f, 1.0f});
 
 public:
   glm::mat4 getModelMatrix() const;
