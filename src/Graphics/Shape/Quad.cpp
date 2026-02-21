@@ -35,21 +35,21 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
   std::vector<glm::vec4> positions;
   // Calculate positions based on width and height values of the quad
   positions.push_back(
-      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 0.0f});
+      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 1.0f});
   positions.push_back(glm::vec4{
       this->_width / 2,
       -this->_height / 2,
       0.0f,
-      0.0f,
+      1.0f,
   });
   positions.push_back(
-      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 0.0f});
+      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 1.0f});
   positions.push_back(
-      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 0.0f});
+      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 1.0f});
   positions.push_back(
-      glm::vec4{-this->_width / 2, this->_height / 2, 0.0f, 0.0f});
+      glm::vec4{-this->_width / 2, this->_height / 2, 0.0f, 1.0f});
   positions.push_back(
-      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 0.0f});
+      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 1.0f});
 
   for (glm::vec4 &position : positions) {
     vertices.push_back(DDE::Vertex{position, this->_color});

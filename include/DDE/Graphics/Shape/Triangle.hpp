@@ -1,6 +1,6 @@
 #pragma once
-#include "DDE/Graphics/Buffer/VertexBuffer.hpp"
 #include <DDE/Engine/ShaderEngine.hpp>
+#include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Shape.hpp>
 
 namespace DDE {
@@ -27,8 +27,7 @@ private:
   void _setUpVertexData(DDE::VertexBuffer &vbo) override;
 
 public:
-  Triangle(float base, float height,
-           DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
+  Triangle(float base, float height, glm::vec4 color = glm::vec4{1.0f});
   Triangle() = delete;
   ~Triangle() = default;
 
