@@ -1,7 +1,6 @@
-#include "glm/fwd.hpp"
 #include <DDE/Graphics/Drawable.hpp>
-#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/fwd.hpp>
 
 /**
  * The constructor is simply used to specify the shader pipeline
