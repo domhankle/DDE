@@ -4,7 +4,7 @@
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
-#include <vector>
+#include <glm/glm.hpp>
 
 namespace DDE {
 
@@ -22,7 +22,7 @@ protected:
 
   void _initializeGLObjects();
   virtual void _setUpVertexData(DDE::VertexBuffer &vbo) = 0;
-  Shape(DDE::Vec4 color = DDE::Vec4{1.0f, 1.0f, 1.0f, 1.0f});
+  Shape(glm::vec4 color = glm::vec4{1.0f});
 
 public:
   virtual void render() = 0;

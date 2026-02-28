@@ -18,7 +18,7 @@ void DDE::Shape::_initializeGLObjects() {
  *
  * @param color An optional color value for the Shape
  */
-DDE::Shape::Shape(DDE::Vec4 color)
+DDE::Shape::Shape(glm::vec4 color)
     : DDE::Drawable(DDE::ShaderStage::PRIMITIVE, color) {
   this->_initializeGLObjects();
 }

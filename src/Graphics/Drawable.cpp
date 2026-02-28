@@ -1,6 +1,6 @@
 #include <DDE/Graphics/Drawable.hpp>
-#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <glm/fwd.hpp>
 
 /**
  * The constructor is simply used to specify the shader pipeline
@@ -11,7 +11,7 @@
  * be drawn
  * @param color The RGBA of this drawable object
  */
-DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline, DDE::Vec4 color)
+DDE::Drawable::Drawable(DDE::ShaderStage shaderPipeline, glm::vec4 color)
     : _shaderPipelineID(shaderPipeline), _color(color), _modelMatrix{1.0f},
       _position{0.0f}, _scale{1.0f} {}
 

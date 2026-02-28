@@ -10,7 +10,7 @@
  * @param color An optional RGBA color for the triangle. It defaults to solid
  * white
  */
-DDE::Triangle::Triangle(float base, float height, DDE::Vec4 color)
+DDE::Triangle::Triangle(float base, float height, glm::vec4 color)
     : DDE::Shape(color), _base(base), _height(height) {
   this->_setUpVertexData(this->_vertexBuffer);
 }
@@ -26,16 +26,18 @@ void DDE::Triangle::_setUpVertexData(DDE::VertexBuffer &vbo) {
   // Create a vector to store our Vertex objects
   std::vector<DDE::Vertex> vertices;
 
-  // Create a vector to store three Vec4 objects (x, y, z) for position
-  std::vector<DDE::Vec4> positions;
+  // Create a vector to store three glm::vec4 objects (x, y, z) for position
+  std::vector<glm::vec4> positions;
 
   // Store the positions of the triangle based on the height and base values
-  positions.push_back(DDE::Vec4{-this->_base / 2, -this->_height / 2});
-  positions.push_back(DDE::Vec4{this->_base / 2, -this->_height / 2});
-  positions.push_back(DDE::Vec4{0.0f, this->_height / 2});
+  positions.push_back(
+      glm::vec4{-this->_base / 2, -this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(
+      glm::vec4{this->_base / 2, -this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(glm::vec4{0.0f, this->_height / 2, 0.0f, 1.0f});
 
-  // Create Vertex objects based on the Vec4 objects
-  for (DDE::Vec4 &position : positions) {
+  // Create Vertex objects based on the glm::vec4 objects
+  for (glm::vec4 &position : positions) {
     vertices.push_back(DDE::Vertex{position, this->_color});
   }
 

@@ -1,8 +1,8 @@
 #include <DDE/Graphics/Buffer/VertexBuffer.hpp>
 #include <DDE/Graphics/Shape/Quad.hpp>
-#include <DDE/Graphics/Vertex/Vec4.hpp>
 #include <DDE/Graphics/Vertex/Vertex.hpp>
 #include <Glad/glad/glad.h>
+#include <glm/glm.hpp>
 #include <vector>
 
 /**
@@ -14,7 +14,7 @@
  * @param height The vertical height of the shape
  * @param color An optional RGBA color for the quad. It defaults to solid white
  */
-DDE::Quad::Quad(float width, float height, DDE::Vec4 color)
+DDE::Quad::Quad(float width, float height, glm::vec4 color)
     : DDE::Shape(color), _width(width), _height(height) {
 
   this->_setUpVertexData(this->_vertexBuffer);
@@ -32,16 +32,26 @@ void DDE::Quad::_setUpVertexData(DDE::VertexBuffer &vbo) {
   std::vector<DDE::Vertex> vertices;
 
   // A list of positions
-  std::vector<DDE::Vec4> positions;
+  std::vector<glm::vec4> positions;
   // Calculate positions based on width and height values of the quad
-  positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
-  positions.push_back(DDE::Vec4{this->_width / 2, -this->_height / 2});
-  positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vec4{this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vec4{-this->_width / 2, this->_height / 2});
-  positions.push_back(DDE::Vec4{-this->_width / 2, -this->_height / 2});
+  positions.push_back(
+      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(glm::vec4{
+      this->_width / 2,
+      -this->_height / 2,
+      0.0f,
+      1.0f,
+  });
+  positions.push_back(
+      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(
+      glm::vec4{this->_width / 2, this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(
+      glm::vec4{-this->_width / 2, this->_height / 2, 0.0f, 1.0f});
+  positions.push_back(
+      glm::vec4{-this->_width / 2, -this->_height / 2, 0.0f, 1.0f});
 
-  for (DDE::Vec4 &position : positions) {
+  for (glm::vec4 &position : positions) {
     vertices.push_back(DDE::Vertex{position, this->_color});
   }
 
