@@ -47,7 +47,7 @@ public:
   void rotate(float degrees, glm::vec3 rotationVector);
   void scale(glm::vec3 scaleVector);
 
-  ~Drawable() = default;
+  virtual ~Drawable() = default;
   virtual void render() = 0;
 };
 

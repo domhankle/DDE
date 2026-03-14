@@ -2,6 +2,7 @@
 #include <DDE/Graphics/Shader/Camera/Camera.hpp>
 #include <memory>
 #include <vector>
+
 namespace DDE {
 
 /**
@@ -23,6 +24,12 @@ private:
 public:
   Scene() = default;
   ~Scene() = default;
+
+  Scene(const Scene &) = delete;
+  Scene &operator=(const Scene &) = delete;
+
+  Scene(Scene &&) = default;
+  Scene &operator=(Scene &&) = default;
 
   DDE::Camera &getCamera();
   std::vector<std::unique_ptr<DDE::Drawable>> &getDrawableObjects();

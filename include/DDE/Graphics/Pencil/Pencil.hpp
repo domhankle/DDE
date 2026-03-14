@@ -4,6 +4,7 @@
 #include <DDE/Graphics/Drawable.hpp>
 #include <DDE/Utility/DrawConfig/DrawConfig.hpp>
 #include <concepts>
+#include <iostream>
 #include <memory>
 
 namespace DDE {
@@ -42,7 +43,6 @@ public:
     for (const std::unique_ptr<DDE::DrawConfig> &config : configs) {
       config->preDraw();
     }
-
     // Update the Model Matrix to the drawable object's model matrix
     DDE::ShaderEngine::UpdateModelMatrix(drawableObject.getModelMatrix());
 
